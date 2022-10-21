@@ -33,13 +33,13 @@ final class VaccinationListViewModel: ViewModelType {
     }
     
     func transform(_ input: Input) -> Output {
-        input.viewWillAppear
-            .flatMap {
+        input.viewWillAppear 
+            .withUnretained(self)
+            .flatMap { (self, _) in
                 self.fetchPaginatedResult(page: 1)
             }
-            .subscribe(onNext: { resultList in
-                let data = resultList.data
-                self.results.accept(data)
+            .subscribe(with: self, onNext: { (self, resultList) in
+                self.updateResults(with: resultList.data)
             })
             .disposed(by: disposeBag)
         
