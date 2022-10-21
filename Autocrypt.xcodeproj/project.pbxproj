@@ -24,6 +24,10 @@
 		EA3FA5452902705500F3B1D8 /* RequestResponsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5442902705500F3B1D8 /* RequestResponsable.swift */; };
 		EA3FA5472902707300F3B1D8 /* VaccinationListRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5462902707300F3B1D8 /* VaccinationListRequestModel.swift */; };
 		EA3FA5492902707F00F3B1D8 /* VaccinationCenterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5482902707F00F3B1D8 /* VaccinationCenterList.swift */; };
+		EA3FA54B2902717E00F3B1D8 /* URLSessionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA54A2902717E00F3B1D8 /* URLSessionable.swift */; };
+		EA3FA54D2902719900F3B1D8 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA54C2902719900F3B1D8 /* NetworkProvider.swift */; };
+		EA3FA5502902727300F3B1D8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA54F2902727300F3B1D8 /* Endpoint.swift */; };
+		EA3FA5522902728B00F3B1D8 /* EndpointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5512902728B00F3B1D8 /* EndpointGenerator.swift */; };
 		EB749528A7A82B3F5F1CF204 /* Pods_AutocryptTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50B10A4215E3FA94E568EAD /* Pods_AutocryptTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +77,10 @@
 		EA3FA5442902705500F3B1D8 /* RequestResponsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResponsable.swift; sourceTree = "<group>"; };
 		EA3FA5462902707300F3B1D8 /* VaccinationListRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationListRequestModel.swift; sourceTree = "<group>"; };
 		EA3FA5482902707F00F3B1D8 /* VaccinationCenterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationCenterList.swift; sourceTree = "<group>"; };
+		EA3FA54A2902717E00F3B1D8 /* URLSessionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionable.swift; sourceTree = "<group>"; };
+		EA3FA54C2902719900F3B1D8 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		EA3FA54F2902727300F3B1D8 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		EA3FA5512902728B00F3B1D8 /* EndpointGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,14 +159,10 @@
 		EA3FA50529026BF900F3B1D8 /* Autocrypt */ = {
 			isa = PBXGroup;
 			children = (
-				EA3FA53729026E2400F3B1D8 /* Data */,
-				EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */,
-				EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */,
-				EA3FA50A29026BF900F3B1D8 /* ViewController.swift */,
-				EA3FA50C29026BF900F3B1D8 /* Main.storyboard */,
-				EA3FA50F29026BF900F3B1D8 /* Assets.xcassets */,
-				EA3FA51129026BF900F3B1D8 /* LaunchScreen.storyboard */,
 				EA3FA51429026BF900F3B1D8 /* Info.plist */,
+				EA3FA54E2902720400F3B1D8 /* App */,
+				EA3FA50A29026BF900F3B1D8 /* ViewController.swift */,
+				EA3FA53729026E2400F3B1D8 /* Data */,
 			);
 			path = Autocrypt;
 			sourceTree = "<group>";
@@ -187,6 +191,8 @@
 				EA3FA53929026F6000F3B1D8 /* Error */,
 				EA3FA53A29026F6600F3B1D8 /* Support */,
 				EA3FA53B29026F7200F3B1D8 /* Endpoint */,
+				EA3FA54A2902717E00F3B1D8 /* URLSessionable.swift */,
+				EA3FA54C2902719900F3B1D8 /* NetworkProvider.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -229,6 +235,8 @@
 			children = (
 				EA3FA53C29026F8300F3B1D8 /* RequestModel */,
 				EA3FA53D29026F8C00F3B1D8 /* ResponseModel */,
+				EA3FA54F2902727300F3B1D8 /* Endpoint.swift */,
+				EA3FA5512902728B00F3B1D8 /* EndpointGenerator.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
@@ -247,6 +255,18 @@
 				EA3FA5482902707F00F3B1D8 /* VaccinationCenterList.swift */,
 			);
 			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		EA3FA54E2902720400F3B1D8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA50C29026BF900F3B1D8 /* Main.storyboard */,
+				EA3FA51129026BF900F3B1D8 /* LaunchScreen.storyboard */,
+				EA3FA50F29026BF900F3B1D8 /* Assets.xcassets */,
+				EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */,
+				EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -512,8 +532,12 @@
 				EA3FA5472902707300F3B1D8 /* VaccinationListRequestModel.swift in Sources */,
 				EA3FA5452902705500F3B1D8 /* RequestResponsable.swift in Sources */,
 				EA3FA5492902707F00F3B1D8 /* VaccinationCenterList.swift in Sources */,
+				EA3FA54B2902717E00F3B1D8 /* URLSessionable.swift in Sources */,
+				EA3FA5522902728B00F3B1D8 /* EndpointGenerator.swift in Sources */,
+				EA3FA54D2902719900F3B1D8 /* NetworkProvider.swift in Sources */,
 				EA3FA50729026BF900F3B1D8 /* AppDelegate.swift in Sources */,
 				EA3FA5432902704B00F3B1D8 /* HttpMethod.swift in Sources */,
+				EA3FA5502902727300F3B1D8 /* Endpoint.swift in Sources */,
 				EA3FA50929026BF900F3B1D8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
