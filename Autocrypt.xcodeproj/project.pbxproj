@@ -18,6 +18,12 @@
 		EA3FA51E29026BFA00F3B1D8 /* AutocryptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA51D29026BFA00F3B1D8 /* AutocryptTests.swift */; };
 		EA3FA52829026BFA00F3B1D8 /* AutocryptUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA52729026BFA00F3B1D8 /* AutocryptUITests.swift */; };
 		EA3FA52A29026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA52929026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift */; };
+		EA3FA53F2902703400F3B1D8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA53E2902703400F3B1D8 /* NetworkError.swift */; };
+		EA3FA5412902704000F3B1D8 /* Encodable+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5402902704000F3B1D8 /* Encodable+extension.swift */; };
+		EA3FA5432902704B00F3B1D8 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5422902704B00F3B1D8 /* HttpMethod.swift */; };
+		EA3FA5452902705500F3B1D8 /* RequestResponsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5442902705500F3B1D8 /* RequestResponsable.swift */; };
+		EA3FA5472902707300F3B1D8 /* VaccinationListRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5462902707300F3B1D8 /* VaccinationListRequestModel.swift */; };
+		EA3FA5492902707F00F3B1D8 /* VaccinationCenterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5482902707F00F3B1D8 /* VaccinationCenterList.swift */; };
 		EB749528A7A82B3F5F1CF204 /* Pods_AutocryptTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50B10A4215E3FA94E568EAD /* Pods_AutocryptTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +67,12 @@
 		EA3FA52329026BFA00F3B1D8 /* AutocryptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutocryptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3FA52729026BFA00F3B1D8 /* AutocryptUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocryptUITests.swift; sourceTree = "<group>"; };
 		EA3FA52929026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocryptUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EA3FA53E2902703400F3B1D8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		EA3FA5402902704000F3B1D8 /* Encodable+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+extension.swift"; sourceTree = "<group>"; };
+		EA3FA5422902704B00F3B1D8 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		EA3FA5442902705500F3B1D8 /* RequestResponsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResponsable.swift; sourceTree = "<group>"; };
+		EA3FA5462902707300F3B1D8 /* VaccinationListRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationListRequestModel.swift; sourceTree = "<group>"; };
+		EA3FA5482902707F00F3B1D8 /* VaccinationCenterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationCenterList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +202,7 @@
 		EA3FA53829026F5800F3B1D8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				EA3FA5402902704000F3B1D8 /* Encodable+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -197,6 +210,7 @@
 		EA3FA53929026F6000F3B1D8 /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				EA3FA53E2902703400F3B1D8 /* NetworkError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -204,6 +218,8 @@
 		EA3FA53A29026F6600F3B1D8 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				EA3FA5422902704B00F3B1D8 /* HttpMethod.swift */,
+				EA3FA5442902705500F3B1D8 /* RequestResponsable.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -220,6 +236,7 @@
 		EA3FA53C29026F8300F3B1D8 /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				EA3FA5462902707300F3B1D8 /* VaccinationListRequestModel.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -227,6 +244,7 @@
 		EA3FA53D29026F8C00F3B1D8 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				EA3FA5482902707F00F3B1D8 /* VaccinationCenterList.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -488,8 +506,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA3FA5412902704000F3B1D8 /* Encodable+extension.swift in Sources */,
 				EA3FA50B29026BF900F3B1D8 /* ViewController.swift in Sources */,
+				EA3FA53F2902703400F3B1D8 /* NetworkError.swift in Sources */,
+				EA3FA5472902707300F3B1D8 /* VaccinationListRequestModel.swift in Sources */,
+				EA3FA5452902705500F3B1D8 /* RequestResponsable.swift in Sources */,
+				EA3FA5492902707F00F3B1D8 /* VaccinationCenterList.swift in Sources */,
 				EA3FA50729026BF900F3B1D8 /* AppDelegate.swift in Sources */,
+				EA3FA5432902704B00F3B1D8 /* HttpMethod.swift in Sources */,
 				EA3FA50929026BF900F3B1D8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
