@@ -10,7 +10,7 @@ import Foundation
 enum NetworkError: Error {
     case unknownError(_ error: Error)
     case invalidRequest
-    case invalidHttpStatusCode
+    case invalidHttpStatusCode(code: Int)
     case invalidData
     case invalidURL
     case decodingFailed
@@ -23,8 +23,8 @@ extension NetworkError: LocalizedError {
             return "예상하지 못한 에러가 발생했습니다: \(error.localizedDescription)"
         case .invalidRequest:
             return "URL Request 관련 에러가 발생했습니다"
-        case .invalidHttpStatusCode:
-            return "Status 코드가 정상범위가 아닙니다"
+        case .invalidHttpStatusCode(let statusCode):
+            return "Status 코드가 정상범위가 아닙니다. \(statusCode)"
         case .invalidData:
             return "유효한 데이터가 아닙니다"
         case .invalidURL:
