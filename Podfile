@@ -7,10 +7,9 @@ target 'Autocrypt' do
 
   # Pods for Autocrypt
 
-  pod 'RxSwift', '~> 6.5.0'
-  pod 'RxCocoa', '~> 6.5.0'
-  pod 'SnapKit', '~> 5.6.0'
-
+    pod 'SnapKit', '~> 5.6.0'
+    pod 'RxSwift', '~> 6.5.0'
+    pod 'RxCocoa', '~> 6.5.0'
 
   target 'AutocryptTests' do
     inherit! :search_paths
