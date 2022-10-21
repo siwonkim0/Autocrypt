@@ -19,12 +19,13 @@ final class VaccinationListViewModel: ViewModelType {
     
     struct Output {
         let result: Observable<[VaccinationCenter]>
+        let canFetchNextPage: Observable<Int?>
     }
     
     private let repository: VaccinationRepositoryType
     
     // MARK: - State
-    private var nextPage: Int = 1
+    private var nextPage = BehaviorRelay<Int?>(value: 1)
     private var results = BehaviorRelay<[VaccinationCenter]>(value: [])
     
     init(repository: VaccinationRepositoryType) {
@@ -44,24 +45,40 @@ final class VaccinationListViewModel: ViewModelType {
         
         input.loadNextPage
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
-            .flatMap {
-                self.fetchPaginatedResult(page: self.nextPage)
+            .withUnretained(self)
+            .flatMap { (self, _) -> Observable<VaccinationCenterList> in
+                guard let nextPage = self.nextPage.value else {
+                    return .empty()
+                }
+                return self.fetchPaginatedResult(page: nextPage)
             }
-            .subscribe(onNext: { resultList in
-                self.nextPage = resultList.page + 1
-                print(self.nextPage)
-                let data = resultList.data
-                var newResults = self.results.value
-                newResults.append(contentsOf: data)
-                self.results.accept(newResults)
+            .subscribe(with: self, onNext: { (self, resultList) in
+                self.updateNextPage(with: resultList.page)
+                self.updateResults(with: resultList.data)
             })
             .disposed(by: disposeBag)
         
-        return Output(result: results.asObservable())
+        return Output(
+            result: results.asObservable(),
+            canFetchNextPage: nextPage.asObservable()
+        )
     }
     
-    func fetchPaginatedResult(page: Int) -> Observable<VaccinationCenterList> {
+    private func fetchPaginatedResult(page: Int) -> Observable<VaccinationCenterList> {
         return repository.fetchVaccinationList(page: "\(page)")
+    }
+    
+    private func updateNextPage(with page: Int) {
+        self.nextPage.accept(page + 1)
+    }
+    
+    private func updateResults(with data: [VaccinationCenter]) {
+        if data.isEmpty {
+            self.nextPage.accept(nil)
+        }
+        var newResults = self.results.value
+        newResults.append(contentsOf: data)
+        self.results.accept(newResults)
     }
     
     
