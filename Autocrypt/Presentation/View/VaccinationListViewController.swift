@@ -37,18 +37,30 @@ final class VaccinationListViewController: UIViewController {
     private func configureBind() {
         let input = VaccinationListViewModel.Input(
             viewWillAppear: rx.viewWillAppear.asObservable(),
-            loadNextPage: rx.viewWillAppear.asObservable(),
-            scrollToTop: rx.viewWillAppear.asObservable()
+            loadNextPage: tableViewContentOffsetChanged(),
+            scrollToTopButtonTapped: rx.viewWillAppear.asObservable()
         )
         let output = viewModel.transform(input)
         
-        output.initialResult
+        output.result
             .bind(to: tableView.rx.items(
                 cellIdentifier: "VaccinationListTableViewCell",
                 cellType: VaccinationListTableViewCell.self)
             ) { index, element, cell in
                 cell.configure(with: element)
             }.disposed(by: disposeBag)
+    }
+    
+    private func tableViewContentOffsetChanged() -> Observable<Void> {
+        return tableView.rx.contentOffset
+            .withUnretained(self)
+            .filter { (self, offset) in
+                guard self.tableView.contentSize.height != 0 else {
+                    return false
+                }
+                return self.tableView.frame.height + offset.y + 100 >= self.tableView.contentSize.height
+            }
+            .map { _ in }
     }
     
     //MARK: - Configure View
