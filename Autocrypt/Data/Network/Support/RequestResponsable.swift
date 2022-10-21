@@ -26,7 +26,7 @@ extension Requestable {
         }
         if let queryParameters = try queryParameters?.toDictionary() {
             let queries = queryParameters.map { URLQueryItem(name: $0, value: "\($1)") }
-            urlComponents.queryItems = queries
+            urlComponents.percentEncodedQueryItems = queries
         }
         guard let url = urlComponents.url else {
             throw NetworkError.invalidURL
