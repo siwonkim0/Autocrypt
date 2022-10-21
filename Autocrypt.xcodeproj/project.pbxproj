@@ -13,9 +13,7 @@
 		EA3FA50929026BF900F3B1D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */; };
 		EA3FA50B29026BF900F3B1D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50A29026BF900F3B1D8 /* ViewController.swift */; };
 		EA3FA51029026BF900F3B1D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA50F29026BF900F3B1D8 /* Assets.xcassets */; };
-		EA3FA51E29026BFA00F3B1D8 /* AutocryptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA51D29026BFA00F3B1D8 /* AutocryptTests.swift */; };
-		EA3FA52829026BFA00F3B1D8 /* AutocryptUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA52729026BFA00F3B1D8 /* AutocryptUITests.swift */; };
-		EA3FA52A29026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA52929026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift */; };
+		EA3FA51E29026BFA00F3B1D8 /* NetworkProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA51D29026BFA00F3B1D8 /* NetworkProviderTests.swift */; };
 		EA3FA53F2902703400F3B1D8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA53E2902703400F3B1D8 /* NetworkError.swift */; };
 		EA3FA5412902704000F3B1D8 /* Encodable+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5402902704000F3B1D8 /* Encodable+extension.swift */; };
 		EA3FA5432902704B00F3B1D8 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5422902704B00F3B1D8 /* HttpMethod.swift */; };
@@ -26,6 +24,9 @@
 		EA3FA54D2902719900F3B1D8 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA54C2902719900F3B1D8 /* NetworkProvider.swift */; };
 		EA3FA5502902727300F3B1D8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA54F2902727300F3B1D8 /* Endpoint.swift */; };
 		EA3FA5522902728B00F3B1D8 /* EndpointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5512902728B00F3B1D8 /* EndpointGenerator.swift */; };
+		EA3FA55A290289BA00F3B1D8 /* StubURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA558290289AC00F3B1D8 /* StubURLSession.swift */; };
+		EA3FA55B290289BD00F3B1D8 /* StubURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5562902898E00F3B1D8 /* StubURLSessionDataTask.swift */; };
+		EA3FA55C290289C000F3B1D8 /* StubResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5542902893900F3B1D8 /* StubResponse.swift */; };
 		EB749528A7A82B3F5F1CF204 /* Pods_AutocryptTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50B10A4215E3FA94E568EAD /* Pods_AutocryptTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,10 +64,8 @@
 		EA3FA50F29026BF900F3B1D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA3FA51429026BF900F3B1D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA3FA51929026BF900F3B1D8 /* AutocryptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutocryptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA3FA51D29026BFA00F3B1D8 /* AutocryptTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocryptTests.swift; sourceTree = "<group>"; };
+		EA3FA51D29026BFA00F3B1D8 /* NetworkProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProviderTests.swift; sourceTree = "<group>"; };
 		EA3FA52329026BFA00F3B1D8 /* AutocryptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutocryptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA3FA52729026BFA00F3B1D8 /* AutocryptUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocryptUITests.swift; sourceTree = "<group>"; };
-		EA3FA52929026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocryptUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EA3FA53E2902703400F3B1D8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		EA3FA5402902704000F3B1D8 /* Encodable+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+extension.swift"; sourceTree = "<group>"; };
 		EA3FA5422902704B00F3B1D8 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
@@ -77,6 +76,9 @@
 		EA3FA54C2902719900F3B1D8 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		EA3FA54F2902727300F3B1D8 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		EA3FA5512902728B00F3B1D8 /* EndpointGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointGenerator.swift; sourceTree = "<group>"; };
+		EA3FA5542902893900F3B1D8 /* StubResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubResponse.swift; sourceTree = "<group>"; };
+		EA3FA5562902898E00F3B1D8 /* StubURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSessionDataTask.swift; sourceTree = "<group>"; };
+		EA3FA558290289AC00F3B1D8 /* StubURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +137,6 @@
 			children = (
 				EA3FA50529026BF900F3B1D8 /* Autocrypt */,
 				EA3FA51C29026BFA00F3B1D8 /* AutocryptTests */,
-				EA3FA52629026BFA00F3B1D8 /* AutocryptUITests */,
 				EA3FA50429026BF900F3B1D8 /* Products */,
 				41868BAFC224AB3006049E66 /* Pods */,
 				9B48B87FC010ED005EC8DD26 /* Frameworks */,
@@ -166,18 +167,10 @@
 		EA3FA51C29026BFA00F3B1D8 /* AutocryptTests */ = {
 			isa = PBXGroup;
 			children = (
-				EA3FA51D29026BFA00F3B1D8 /* AutocryptTests.swift */,
+				EA3FA5532902892900F3B1D8 /* TestDouble */,
+				EA3FA51D29026BFA00F3B1D8 /* NetworkProviderTests.swift */,
 			);
 			path = AutocryptTests;
-			sourceTree = "<group>";
-		};
-		EA3FA52629026BFA00F3B1D8 /* AutocryptUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EA3FA52729026BFA00F3B1D8 /* AutocryptUITests.swift */,
-				EA3FA52929026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift */,
-			);
-			path = AutocryptUITests;
 			sourceTree = "<group>";
 		};
 		EA3FA53629026E1D00F3B1D8 /* Network */ = {
@@ -261,6 +254,16 @@
 				EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		EA3FA5532902892900F3B1D8 /* TestDouble */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA5542902893900F3B1D8 /* StubResponse.swift */,
+				EA3FA5562902898E00F3B1D8 /* StubURLSessionDataTask.swift */,
+				EA3FA558290289AC00F3B1D8 /* StubURLSession.swift */,
+			);
+			path = TestDouble;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -528,8 +531,11 @@
 				EA3FA5522902728B00F3B1D8 /* EndpointGenerator.swift in Sources */,
 				EA3FA54D2902719900F3B1D8 /* NetworkProvider.swift in Sources */,
 				EA3FA50729026BF900F3B1D8 /* AppDelegate.swift in Sources */,
+				EA3FA55C290289C000F3B1D8 /* StubResponse.swift in Sources */,
 				EA3FA5432902704B00F3B1D8 /* HttpMethod.swift in Sources */,
+				EA3FA55B290289BD00F3B1D8 /* StubURLSessionDataTask.swift in Sources */,
 				EA3FA5502902727300F3B1D8 /* Endpoint.swift in Sources */,
+				EA3FA55A290289BA00F3B1D8 /* StubURLSession.swift in Sources */,
 				EA3FA50929026BF900F3B1D8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,7 +544,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA3FA51E29026BFA00F3B1D8 /* AutocryptTests.swift in Sources */,
+				EA3FA51E29026BFA00F3B1D8 /* NetworkProviderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,8 +552,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA3FA52A29026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift in Sources */,
-				EA3FA52829026BFA00F3B1D8 /* AutocryptUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

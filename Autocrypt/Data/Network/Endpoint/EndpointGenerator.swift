@@ -13,7 +13,8 @@ struct EndpointGenerator {
             baseURL: "https://api.odcloud.kr/api",
             path: "/15077586/v1/centers",
             method: .get,
-            queryParameters: VaccinationListRequestModel(page: page)
+            queryParameters: VaccinationListRequestModel(page: page),
+            testData: StubResponse.vaccinationCenterList
         )
     }
 }
