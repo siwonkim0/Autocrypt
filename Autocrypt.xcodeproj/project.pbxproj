@@ -12,9 +12,7 @@
 		EA3FA50729026BF900F3B1D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */; };
 		EA3FA50929026BF900F3B1D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */; };
 		EA3FA50B29026BF900F3B1D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50A29026BF900F3B1D8 /* ViewController.swift */; };
-		EA3FA50E29026BF900F3B1D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA50C29026BF900F3B1D8 /* Main.storyboard */; };
 		EA3FA51029026BF900F3B1D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA50F29026BF900F3B1D8 /* Assets.xcassets */; };
-		EA3FA51329026BF900F3B1D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA51129026BF900F3B1D8 /* LaunchScreen.storyboard */; };
 		EA3FA51E29026BFA00F3B1D8 /* AutocryptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA51D29026BFA00F3B1D8 /* AutocryptTests.swift */; };
 		EA3FA52829026BFA00F3B1D8 /* AutocryptUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA52729026BFA00F3B1D8 /* AutocryptUITests.swift */; };
 		EA3FA52A29026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA52929026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift */; };
@@ -62,9 +60,7 @@
 		EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EA3FA50A29026BF900F3B1D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EA3FA50D29026BF900F3B1D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA3FA50F29026BF900F3B1D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EA3FA51229026BF900F3B1D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA3FA51429026BF900F3B1D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA3FA51929026BF900F3B1D8 /* AutocryptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutocryptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3FA51D29026BFA00F3B1D8 /* AutocryptTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocryptTests.swift; sourceTree = "<group>"; };
@@ -260,8 +256,6 @@
 		EA3FA54E2902720400F3B1D8 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				EA3FA50C29026BF900F3B1D8 /* Main.storyboard */,
-				EA3FA51129026BF900F3B1D8 /* LaunchScreen.storyboard */,
 				EA3FA50F29026BF900F3B1D8 /* Assets.xcassets */,
 				EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */,
 				EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */,
@@ -379,9 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA3FA51329026BF900F3B1D8 /* LaunchScreen.storyboard in Resources */,
 				EA3FA51029026BF900F3B1D8 /* Assets.xcassets in Resources */,
-				EA3FA50E29026BF900F3B1D8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,25 +566,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		EA3FA50C29026BF900F3B1D8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA3FA50D29026BF900F3B1D8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EA3FA51129026BF900F3B1D8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA3FA51229026BF900F3B1D8 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		EA3FA52B29026BFA00F3B1D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -721,7 +694,6 @@
 				INFOPLIST_FILE = Autocrypt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -751,7 +723,6 @@
 				INFOPLIST_FILE = Autocrypt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

@@ -19,6 +19,7 @@ class ViewController: UIViewController {
                 print(data)
             })
             .disposed(by: disposeBag)
+        view.backgroundColor = .white
     }
 
 
