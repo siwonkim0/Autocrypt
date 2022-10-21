@@ -49,6 +49,14 @@ final class VaccinationListViewController: UIViewController {
             ) { index, element, cell in
                 cell.configure(with: element)
             }.disposed(by: disposeBag)
+        
+        output.canFetchNextPage
+            .filter { $0 == nil }
+            .asDriver(onErrorJustReturn: nil)
+            .drive(with: self, onNext: { (self, nextPage) in
+                self.presentAlert(with: "더 이상 결과가 없습니다.")
+            })
+            .disposed(by: disposeBag)
     }
     
     private func tableViewContentOffsetChanged() -> Observable<Void> {
@@ -61,6 +69,13 @@ final class VaccinationListViewController: UIViewController {
                 return self.tableView.frame.height + offset.y + 100 >= self.tableView.contentSize.height
             }
             .map { _ in }
+    }
+    
+    private func presentAlert(with message: String) {
+        let alert = UIAlertController(title: nil, message: "\(message)", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(confirm)
+        present(alert, animated: true)
     }
     
     //MARK: - Configure View
@@ -76,7 +91,6 @@ final class VaccinationListViewController: UIViewController {
         })
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
-        
     }
 
 }
