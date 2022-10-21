@@ -7,15 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DCBE3375D14AC1DE7D4714D /* Pods_Autocrypt_AutocryptUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3921C7CB9D8AFAB300D73E /* Pods_Autocrypt_AutocryptUITests.framework */; };
+		A399D3D039D3399B73983B30 /* Pods_Autocrypt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DDAFC5610CE8CA2DA06DF1 /* Pods_Autocrypt.framework */; };
 		EA3FA50729026BF900F3B1D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */; };
 		EA3FA50929026BF900F3B1D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */; };
 		EA3FA50B29026BF900F3B1D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50A29026BF900F3B1D8 /* ViewController.swift */; };
-		EA3FA50E29026BF900F3B1D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA50C29026BF900F3B1D8 /* Main.storyboard */; };
 		EA3FA51029026BF900F3B1D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA50F29026BF900F3B1D8 /* Assets.xcassets */; };
-		EA3FA51329026BF900F3B1D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3FA51129026BF900F3B1D8 /* LaunchScreen.storyboard */; };
-		EA3FA51E29026BFA00F3B1D8 /* AutocryptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA51D29026BFA00F3B1D8 /* AutocryptTests.swift */; };
-		EA3FA52829026BFA00F3B1D8 /* AutocryptUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA52729026BFA00F3B1D8 /* AutocryptUITests.swift */; };
-		EA3FA52A29026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA52929026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift */; };
+		EA3FA51E29026BFA00F3B1D8 /* NetworkProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA51D29026BFA00F3B1D8 /* NetworkProviderTests.swift */; };
+		EA3FA53F2902703400F3B1D8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA53E2902703400F3B1D8 /* NetworkError.swift */; };
+		EA3FA5412902704000F3B1D8 /* Encodable+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5402902704000F3B1D8 /* Encodable+extension.swift */; };
+		EA3FA5432902704B00F3B1D8 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5422902704B00F3B1D8 /* HttpMethod.swift */; };
+		EA3FA5452902705500F3B1D8 /* RequestResponsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5442902705500F3B1D8 /* RequestResponsable.swift */; };
+		EA3FA5472902707300F3B1D8 /* VaccinationListRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5462902707300F3B1D8 /* VaccinationListRequestModel.swift */; };
+		EA3FA5492902707F00F3B1D8 /* VaccinationCenterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5482902707F00F3B1D8 /* VaccinationCenterList.swift */; };
+		EA3FA54B2902717E00F3B1D8 /* URLSessionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA54A2902717E00F3B1D8 /* URLSessionable.swift */; };
+		EA3FA54D2902719900F3B1D8 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA54C2902719900F3B1D8 /* NetworkProvider.swift */; };
+		EA3FA5502902727300F3B1D8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA54F2902727300F3B1D8 /* Endpoint.swift */; };
+		EA3FA5522902728B00F3B1D8 /* EndpointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5512902728B00F3B1D8 /* EndpointGenerator.swift */; };
+		EA3FA55A290289BA00F3B1D8 /* StubURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA558290289AC00F3B1D8 /* StubURLSession.swift */; };
+		EA3FA55B290289BD00F3B1D8 /* StubURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5562902898E00F3B1D8 /* StubURLSessionDataTask.swift */; };
+		EA3FA55C290289C000F3B1D8 /* StubResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5542902893900F3B1D8 /* StubResponse.swift */; };
+		EB749528A7A82B3F5F1CF204 /* Pods_AutocryptTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50B10A4215E3FA94E568EAD /* Pods_AutocryptTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,19 +48,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		033FF083078DA305CA3CF767 /* Pods-Autocrypt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autocrypt.release.xcconfig"; path = "Target Support Files/Pods-Autocrypt/Pods-Autocrypt.release.xcconfig"; sourceTree = "<group>"; };
+		44E5592970812AB93A5B6391 /* Pods-AutocryptTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocryptTests.release.xcconfig"; path = "Target Support Files/Pods-AutocryptTests/Pods-AutocryptTests.release.xcconfig"; sourceTree = "<group>"; };
+		52DDAFC5610CE8CA2DA06DF1 /* Pods_Autocrypt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autocrypt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		602BA0CAF4CD2E8C9578BA62 /* Pods-Autocrypt-AutocryptUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autocrypt-AutocryptUITests.release.xcconfig"; path = "Target Support Files/Pods-Autocrypt-AutocryptUITests/Pods-Autocrypt-AutocryptUITests.release.xcconfig"; sourceTree = "<group>"; };
+		69DF194FE783CE3BADAD14B7 /* Pods-AutocryptTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutocryptTests.debug.xcconfig"; path = "Target Support Files/Pods-AutocryptTests/Pods-AutocryptTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6D3921C7CB9D8AFAB300D73E /* Pods_Autocrypt_AutocryptUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autocrypt_AutocryptUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7E8B587CC99195B8F48943 /* Pods-Autocrypt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autocrypt.debug.xcconfig"; path = "Target Support Files/Pods-Autocrypt/Pods-Autocrypt.debug.xcconfig"; sourceTree = "<group>"; };
+		DA12B37FF0605D19536EDBBC /* Pods-Autocrypt-AutocryptUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autocrypt-AutocryptUITests.debug.xcconfig"; path = "Target Support Files/Pods-Autocrypt-AutocryptUITests/Pods-Autocrypt-AutocryptUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E50B10A4215E3FA94E568EAD /* Pods_AutocryptTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocryptTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3FA50329026BF900F3B1D8 /* Autocrypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autocrypt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EA3FA50A29026BF900F3B1D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EA3FA50D29026BF900F3B1D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA3FA50F29026BF900F3B1D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EA3FA51229026BF900F3B1D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA3FA51429026BF900F3B1D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA3FA51929026BF900F3B1D8 /* AutocryptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutocryptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA3FA51D29026BFA00F3B1D8 /* AutocryptTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocryptTests.swift; sourceTree = "<group>"; };
+		EA3FA51D29026BFA00F3B1D8 /* NetworkProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProviderTests.swift; sourceTree = "<group>"; };
 		EA3FA52329026BFA00F3B1D8 /* AutocryptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutocryptUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA3FA52729026BFA00F3B1D8 /* AutocryptUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocryptUITests.swift; sourceTree = "<group>"; };
-		EA3FA52929026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocryptUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EA3FA53E2902703400F3B1D8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		EA3FA5402902704000F3B1D8 /* Encodable+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+extension.swift"; sourceTree = "<group>"; };
+		EA3FA5422902704B00F3B1D8 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		EA3FA5442902705500F3B1D8 /* RequestResponsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResponsable.swift; sourceTree = "<group>"; };
+		EA3FA5462902707300F3B1D8 /* VaccinationListRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationListRequestModel.swift; sourceTree = "<group>"; };
+		EA3FA5482902707F00F3B1D8 /* VaccinationCenterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationCenterList.swift; sourceTree = "<group>"; };
+		EA3FA54A2902717E00F3B1D8 /* URLSessionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionable.swift; sourceTree = "<group>"; };
+		EA3FA54C2902719900F3B1D8 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		EA3FA54F2902727300F3B1D8 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		EA3FA5512902728B00F3B1D8 /* EndpointGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointGenerator.swift; sourceTree = "<group>"; };
+		EA3FA5542902893900F3B1D8 /* StubResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubResponse.swift; sourceTree = "<group>"; };
+		EA3FA5562902898E00F3B1D8 /* StubURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSessionDataTask.swift; sourceTree = "<group>"; };
+		EA3FA558290289AC00F3B1D8 /* StubURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubURLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A399D3D039D3399B73983B30 /* Pods_Autocrypt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB749528A7A82B3F5F1CF204 /* Pods_AutocryptTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,19 +102,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DCBE3375D14AC1DE7D4714D /* Pods_Autocrypt_AutocryptUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41868BAFC224AB3006049E66 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E8B587CC99195B8F48943 /* Pods-Autocrypt.debug.xcconfig */,
+				033FF083078DA305CA3CF767 /* Pods-Autocrypt.release.xcconfig */,
+				DA12B37FF0605D19536EDBBC /* Pods-Autocrypt-AutocryptUITests.debug.xcconfig */,
+				602BA0CAF4CD2E8C9578BA62 /* Pods-Autocrypt-AutocryptUITests.release.xcconfig */,
+				69DF194FE783CE3BADAD14B7 /* Pods-AutocryptTests.debug.xcconfig */,
+				44E5592970812AB93A5B6391 /* Pods-AutocryptTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9B48B87FC010ED005EC8DD26 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52DDAFC5610CE8CA2DA06DF1 /* Pods_Autocrypt.framework */,
+				6D3921C7CB9D8AFAB300D73E /* Pods_Autocrypt_AutocryptUITests.framework */,
+				E50B10A4215E3FA94E568EAD /* Pods_AutocryptTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EA3FA4FA29026BF900F3B1D8 = {
 			isa = PBXGroup;
 			children = (
 				EA3FA50529026BF900F3B1D8 /* Autocrypt */,
 				EA3FA51C29026BFA00F3B1D8 /* AutocryptTests */,
-				EA3FA52629026BFA00F3B1D8 /* AutocryptUITests */,
 				EA3FA50429026BF900F3B1D8 /* Products */,
+				41868BAFC224AB3006049E66 /* Pods */,
+				9B48B87FC010ED005EC8DD26 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +156,10 @@
 		EA3FA50529026BF900F3B1D8 /* Autocrypt */ = {
 			isa = PBXGroup;
 			children = (
-				EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */,
-				EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */,
-				EA3FA50A29026BF900F3B1D8 /* ViewController.swift */,
-				EA3FA50C29026BF900F3B1D8 /* Main.storyboard */,
-				EA3FA50F29026BF900F3B1D8 /* Assets.xcassets */,
-				EA3FA51129026BF900F3B1D8 /* LaunchScreen.storyboard */,
 				EA3FA51429026BF900F3B1D8 /* Info.plist */,
+				EA3FA54E2902720400F3B1D8 /* App */,
+				EA3FA50A29026BF900F3B1D8 /* ViewController.swift */,
+				EA3FA53729026E2400F3B1D8 /* Data */,
 			);
 			path = Autocrypt;
 			sourceTree = "<group>";
@@ -113,18 +167,103 @@
 		EA3FA51C29026BFA00F3B1D8 /* AutocryptTests */ = {
 			isa = PBXGroup;
 			children = (
-				EA3FA51D29026BFA00F3B1D8 /* AutocryptTests.swift */,
+				EA3FA5532902892900F3B1D8 /* TestDouble */,
+				EA3FA51D29026BFA00F3B1D8 /* NetworkProviderTests.swift */,
 			);
 			path = AutocryptTests;
 			sourceTree = "<group>";
 		};
-		EA3FA52629026BFA00F3B1D8 /* AutocryptUITests */ = {
+		EA3FA53629026E1D00F3B1D8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EA3FA52729026BFA00F3B1D8 /* AutocryptUITests.swift */,
-				EA3FA52929026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift */,
+				EA3FA53829026F5800F3B1D8 /* Extension */,
+				EA3FA53929026F6000F3B1D8 /* Error */,
+				EA3FA53A29026F6600F3B1D8 /* Support */,
+				EA3FA53B29026F7200F3B1D8 /* Endpoint */,
+				EA3FA54A2902717E00F3B1D8 /* URLSessionable.swift */,
+				EA3FA54C2902719900F3B1D8 /* NetworkProvider.swift */,
 			);
-			path = AutocryptUITests;
+			path = Network;
+			sourceTree = "<group>";
+		};
+		EA3FA53729026E2400F3B1D8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA53629026E1D00F3B1D8 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		EA3FA53829026F5800F3B1D8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA5402902704000F3B1D8 /* Encodable+extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		EA3FA53929026F6000F3B1D8 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA53E2902703400F3B1D8 /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		EA3FA53A29026F6600F3B1D8 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA5422902704B00F3B1D8 /* HttpMethod.swift */,
+				EA3FA5442902705500F3B1D8 /* RequestResponsable.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		EA3FA53B29026F7200F3B1D8 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA53C29026F8300F3B1D8 /* RequestModel */,
+				EA3FA53D29026F8C00F3B1D8 /* ResponseModel */,
+				EA3FA54F2902727300F3B1D8 /* Endpoint.swift */,
+				EA3FA5512902728B00F3B1D8 /* EndpointGenerator.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		EA3FA53C29026F8300F3B1D8 /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA5462902707300F3B1D8 /* VaccinationListRequestModel.swift */,
+			);
+			path = RequestModel;
+			sourceTree = "<group>";
+		};
+		EA3FA53D29026F8C00F3B1D8 /* ResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA5482902707F00F3B1D8 /* VaccinationCenterList.swift */,
+			);
+			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		EA3FA54E2902720400F3B1D8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA50F29026BF900F3B1D8 /* Assets.xcassets */,
+				EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */,
+				EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EA3FA5532902892900F3B1D8 /* TestDouble */ = {
+			isa = PBXGroup;
+			children = (
+				EA3FA5542902893900F3B1D8 /* StubResponse.swift */,
+				EA3FA5562902898E00F3B1D8 /* StubURLSessionDataTask.swift */,
+				EA3FA558290289AC00F3B1D8 /* StubURLSession.swift */,
+			);
+			path = TestDouble;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +273,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA3FA52D29026BFA00F3B1D8 /* Build configuration list for PBXNativeTarget "Autocrypt" */;
 			buildPhases = (
+				C3E3CF92483D1C0DDFF31313 /* [CP] Check Pods Manifest.lock */,
 				EA3FA4FF29026BF900F3B1D8 /* Sources */,
 				EA3FA50029026BF900F3B1D8 /* Frameworks */,
 				EA3FA50129026BF900F3B1D8 /* Resources */,
+				CC5FB444D3866C5A85B2FFA6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,9 +292,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA3FA53029026BFA00F3B1D8 /* Build configuration list for PBXNativeTarget "AutocryptTests" */;
 			buildPhases = (
+				3B6E891DE543150CE4EB76ED /* [CP] Check Pods Manifest.lock */,
 				EA3FA51529026BF900F3B1D8 /* Sources */,
 				EA3FA51629026BF900F3B1D8 /* Frameworks */,
 				EA3FA51729026BF900F3B1D8 /* Resources */,
+				EDE109E574A6096F4D040889 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,9 +312,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA3FA53329026BFA00F3B1D8 /* Build configuration list for PBXNativeTarget "AutocryptUITests" */;
 			buildPhases = (
+				ADA45DFE12CE4FEC0F8C9BDF /* [CP] Check Pods Manifest.lock */,
 				EA3FA51F29026BFA00F3B1D8 /* Sources */,
 				EA3FA52029026BFA00F3B1D8 /* Frameworks */,
 				EA3FA52129026BFA00F3B1D8 /* Resources */,
+				4631463FD78C02C650A50008 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,9 +376,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA3FA51329026BF900F3B1D8 /* LaunchScreen.storyboard in Resources */,
 				EA3FA51029026BF900F3B1D8 /* Assets.xcassets in Resources */,
-				EA3FA50E29026BF900F3B1D8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,13 +396,146 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3B6E891DE543150CE4EB76ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AutocryptTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4631463FD78C02C650A50008 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autocrypt-AutocryptUITests/Pods-Autocrypt-AutocryptUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autocrypt-AutocryptUITests/Pods-Autocrypt-AutocryptUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Autocrypt-AutocryptUITests/Pods-Autocrypt-AutocryptUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADA45DFE12CE4FEC0F8C9BDF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Autocrypt-AutocryptUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3E3CF92483D1C0DDFF31313 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Autocrypt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC5FB444D3866C5A85B2FFA6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autocrypt/Pods-Autocrypt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autocrypt/Pods-Autocrypt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Autocrypt/Pods-Autocrypt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDE109E574A6096F4D040889 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AutocryptTests/Pods-AutocryptTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AutocryptTests/Pods-AutocryptTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AutocryptTests/Pods-AutocryptTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EA3FA4FF29026BF900F3B1D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA3FA5412902704000F3B1D8 /* Encodable+extension.swift in Sources */,
 				EA3FA50B29026BF900F3B1D8 /* ViewController.swift in Sources */,
+				EA3FA53F2902703400F3B1D8 /* NetworkError.swift in Sources */,
+				EA3FA5472902707300F3B1D8 /* VaccinationListRequestModel.swift in Sources */,
+				EA3FA5452902705500F3B1D8 /* RequestResponsable.swift in Sources */,
+				EA3FA5492902707F00F3B1D8 /* VaccinationCenterList.swift in Sources */,
+				EA3FA54B2902717E00F3B1D8 /* URLSessionable.swift in Sources */,
+				EA3FA5522902728B00F3B1D8 /* EndpointGenerator.swift in Sources */,
+				EA3FA54D2902719900F3B1D8 /* NetworkProvider.swift in Sources */,
 				EA3FA50729026BF900F3B1D8 /* AppDelegate.swift in Sources */,
+				EA3FA55C290289C000F3B1D8 /* StubResponse.swift in Sources */,
+				EA3FA5432902704B00F3B1D8 /* HttpMethod.swift in Sources */,
+				EA3FA55B290289BD00F3B1D8 /* StubURLSessionDataTask.swift in Sources */,
+				EA3FA5502902727300F3B1D8 /* Endpoint.swift in Sources */,
+				EA3FA55A290289BA00F3B1D8 /* StubURLSession.swift in Sources */,
 				EA3FA50929026BF900F3B1D8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +544,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA3FA51E29026BFA00F3B1D8 /* AutocryptTests.swift in Sources */,
+				EA3FA51E29026BFA00F3B1D8 /* NetworkProviderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +552,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA3FA52A29026BFA00F3B1D8 /* AutocryptUITestsLaunchTests.swift in Sources */,
-				EA3FA52829026BFA00F3B1D8 /* AutocryptUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,25 +569,6 @@
 			targetProxy = EA3FA52429026BFA00F3B1D8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		EA3FA50C29026BF900F3B1D8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA3FA50D29026BF900F3B1D8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EA3FA51129026BF900F3B1D8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA3FA51229026BF900F3B1D8 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		EA3FA52B29026BFA00F3B1D8 /* Debug */ = {
@@ -432,6 +687,7 @@
 		};
 		EA3FA52E29026BFA00F3B1D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE7E8B587CC99195B8F48943 /* Pods-Autocrypt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -442,7 +698,6 @@
 				INFOPLIST_FILE = Autocrypt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -461,6 +716,7 @@
 		};
 		EA3FA52F29026BFA00F3B1D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 033FF083078DA305CA3CF767 /* Pods-Autocrypt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,7 +727,6 @@
 				INFOPLIST_FILE = Autocrypt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -490,6 +745,7 @@
 		};
 		EA3FA53129026BFA00F3B1D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69DF194FE783CE3BADAD14B7 /* Pods-AutocryptTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -510,6 +766,7 @@
 		};
 		EA3FA53229026BFA00F3B1D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44E5592970812AB93A5B6391 /* Pods-AutocryptTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -530,6 +787,7 @@
 		};
 		EA3FA53429026BFA00F3B1D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA12B37FF0605D19536EDBBC /* Pods-Autocrypt-AutocryptUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -548,6 +806,7 @@
 		};
 		EA3FA53529026BFA00F3B1D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 602BA0CAF4CD2E8C9578BA62 /* Pods-Autocrypt-AutocryptUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -6,12 +6,20 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
-
+    let networkProvider = NetworkProvider()
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        networkProvider.request(with: EndpointGenerator.fetchVaccinationList(page: "1"))
+            .subscribe(onNext: { data in
+                print(data)
+            })
+            .disposed(by: disposeBag)
+        view.backgroundColor = .white
     }
 
 
