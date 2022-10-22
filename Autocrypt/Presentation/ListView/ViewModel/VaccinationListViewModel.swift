@@ -71,11 +71,14 @@ final class VaccinationListViewModel: ViewModelType {
     }
     
     private func updateResults(with data: [VaccinationCenter]) {
-        if data.isEmpty {
+        if data.count < 10 {
             self.nextPage.accept(nil)
         }
         var newResults = self.results.value
         newResults.append(contentsOf: data)
+        newResults.sort { 
+            $0.updatedAt > $1.updatedAt
+        }
         self.results.accept(newResults)
     }
     
