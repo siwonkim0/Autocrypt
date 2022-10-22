@@ -61,7 +61,7 @@ final class VaccinationListTableViewCell: UITableViewCell {
         titleStackView.axis = .vertical
         titleStackView.spacing = 5
         titleStackView.distribution = .equalSpacing
-        centerNameTitleLabel.snp.makeConstraints { make in
+        titleStackView.snp.makeConstraints { make in
             make.width.equalTo(100)
         }
         return titleStackView
