@@ -34,10 +34,10 @@ final class VaccinationListViewModel: ViewModelType {
         input.viewWillAppear 
             .withUnretained(self)
             .flatMap { (self, _) in
-                self.fetchPaginatedResult(page: 1)
+                self.fetchPaginatedResults(page: 1)
             }
             .subscribe(with: self, onNext: { (self, resultList) in
-                self.updateResults(with: resultList.data)
+                self.updateSortedResults(with: resultList.data)
             })
             .disposed(by: disposeBag)
         
@@ -48,11 +48,11 @@ final class VaccinationListViewModel: ViewModelType {
                 guard let nextPage = self.nextPage.value else {
                     return .empty()
                 }
-                return self.fetchPaginatedResult(page: nextPage)
+                return self.fetchPaginatedResults(page: nextPage)
             }
             .subscribe(with: self, onNext: { (self, resultList) in
                 self.updateNextPage(with: resultList.page)
-                self.updateResults(with: resultList.data)
+                self.updateSortedResults(with: resultList.data)
             })
             .disposed(by: disposeBag)
         
@@ -62,7 +62,7 @@ final class VaccinationListViewModel: ViewModelType {
         )
     }
     
-    private func fetchPaginatedResult(page: Int) -> Observable<VaccinationCenterList> {
+    private func fetchPaginatedResults(page: Int) -> Observable<VaccinationCenterList> {
         return repository.fetchVaccinationList(page: "\(page)")
     }
     
@@ -70,13 +70,13 @@ final class VaccinationListViewModel: ViewModelType {
         self.nextPage.accept(page + 1)
     }
     
-    private func updateResults(with data: [VaccinationCenter]) {
+    private func updateSortedResults(with data: [VaccinationCenter]) {
         if data.count < 10 {
             self.nextPage.accept(nil)
         }
         var newResults = self.results.value
         newResults.append(contentsOf: data)
-        newResults.sort { 
+        newResults.sort {
             $0.updatedAt > $1.updatedAt
         }
         self.results.accept(newResults)
