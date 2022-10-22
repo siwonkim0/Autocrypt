@@ -8,6 +8,10 @@
 import UIKit
 import RxSwift
 
+protocol VaccinationListViewControllerDelegate: AnyObject {
+    func showDetailViewController(at viewController: UIViewController, of model: VaccinationCenter)
+}
+
 final class VaccinationListViewController: UIViewController {
     private let tableView = UITableView()
     private let scrollToTopButton: UIButton = {
@@ -22,6 +26,7 @@ final class VaccinationListViewController: UIViewController {
         return button
     }()
     
+    weak var coordinator: VaccinationListViewControllerDelegate?
     private let disposeBag = DisposeBag()
     private let viewModel: VaccinationListViewModel
     
@@ -73,8 +78,8 @@ final class VaccinationListViewController: UIViewController {
             .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(VaccinationCenter.self)
-            .subscribe(onNext: {
-                print($0)
+            .subscribe(with: self, onNext: { (self, model) in
+                self.coordinator?.showDetailViewController(at: self, of: model)
             })
             .disposed(by: disposeBag)
     }
