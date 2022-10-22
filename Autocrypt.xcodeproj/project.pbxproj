@@ -36,7 +36,6 @@
 		EA3FA5722902BE9400F3B1D8 /* UILabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5712902BE9400F3B1D8 /* UILabel+extension.swift */; };
 		EA3FA59B29038D9200F3B1D8 /* VaccinationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA59A29038D9200F3B1D8 /* VaccinationDetailViewController.swift */; };
 		EA3FA59D290396C100F3B1D8 /* VaccinationDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA59C290396C100F3B1D8 /* VaccinationDetailInfoView.swift */; };
-		EA3FA5A12903BA0400F3B1D8 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA5A02903BA0400F3B1D8 /* BackgroundView.swift */; };
 		EB749528A7A82B3F5F1CF204 /* Pods_AutocryptTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50B10A4215E3FA94E568EAD /* Pods_AutocryptTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,7 +97,6 @@
 		EA3FA5712902BE9400F3B1D8 /* UILabel+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extension.swift"; sourceTree = "<group>"; };
 		EA3FA59A29038D9200F3B1D8 /* VaccinationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationDetailViewController.swift; sourceTree = "<group>"; };
 		EA3FA59C290396C100F3B1D8 /* VaccinationDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationDetailInfoView.swift; sourceTree = "<group>"; };
-		EA3FA5A02903BA0400F3B1D8 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -363,7 +361,6 @@
 			isa = PBXGroup;
 			children = (
 				EA3FA59C290396C100F3B1D8 /* VaccinationDetailInfoView.swift */,
-				EA3FA5A02903BA0400F3B1D8 /* BackgroundView.swift */,
 				EA3FA59A29038D9200F3B1D8 /* VaccinationDetailViewController.swift */,
 			);
 			path = View;
@@ -633,7 +630,6 @@
 			files = (
 				EA3FA59B29038D9200F3B1D8 /* VaccinationDetailViewController.swift in Sources */,
 				EA3FA5412902704000F3B1D8 /* Encodable+extension.swift in Sources */,
-				EA3FA5A12903BA0400F3B1D8 /* BackgroundView.swift in Sources */,
 				EA3FA50B29026BF900F3B1D8 /* VaccinationListViewController.swift in Sources */,
 				EA3FA53F2902703400F3B1D8 /* NetworkError.swift in Sources */,
 				EA3FA56C2902A2C800F3B1D8 /* VaccinationListTableViewCell.swift in Sources */,
