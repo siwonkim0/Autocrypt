@@ -16,13 +16,16 @@ final class VaccinationDetailCoordinator: Coordinator, VaccinationDetailViewCont
     weak var parentCoordinator: VaccinationDetailCoordinatorDelegate?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
+    private let model: VaccinationCenter
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, model: VaccinationCenter) {
         self.navigationController = navigationController
+        self.model = model
     }
     
     func start() {
-        let detailViewController = VaccinationDetailViewController()
+        let viewModel = VaccinationDetailViewModel(model: model)
+        let detailViewController = VaccinationDetailViewController(viewModel: viewModel)
         detailViewController.coordinator = self
         navigationController.pushViewController(detailViewController, animated: true)
     }

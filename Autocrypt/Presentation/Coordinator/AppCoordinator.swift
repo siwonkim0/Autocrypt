@@ -33,7 +33,7 @@ final class AppCoordinator: Coordinator, VaccinationListCoordinatorDelegate, Vac
     }
     
     func showDetailViewController(at viewController: UIViewController, of model: VaccinationCenter) {
-        let coordinator = VaccinationDetailCoordinator(navigationController: navigationController)
+        let coordinator = VaccinationDetailCoordinator(navigationController: navigationController, model: model)
         childCoordinators.append(coordinator)
         coordinator.parentCoordinator = self
         coordinator.start()
