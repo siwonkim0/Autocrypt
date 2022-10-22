@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol VaccinationDetailViewControllerDelegate: AnyObject {
+//    func showDetailViewController(at viewController: UIViewController, of model: VaccinationCenter)
+    func didFinishPresenting()
+}
+
 class VaccinationDetailViewController: UIViewController {
     
     private let centerNameView = VaccinationDetailInfoView()
@@ -15,10 +20,17 @@ class VaccinationDetailViewController: UIViewController {
     private let updatedAtView = VaccinationDetailInfoView()
     private let addressView = VaccinationDetailInfoView()
     
+    weak var coordinator: VaccinationDetailViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
         setLayout()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        coordinator?.didFinishPresenting()
     }
     
     private func setView() {
