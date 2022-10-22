@@ -9,18 +9,27 @@ import UIKit
 import RxSwift
 
 final class VaccinationListViewController: UIViewController {
-    let disposeBag = DisposeBag()
-    let viewModel: VaccinationListViewModel
-    
-    let tableView: UITableView = {
-        return UITableView()
+    private let tableView = UITableView()
+    private let scrollToTopButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "top-alignment.png"), for: .normal)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 28
+        button.layer.masksToBounds = false
+        button.layer.shadowOffset = CGSize(width: 3, height: 3)
+        button.layer.shadowRadius = 10
+        button.layer.shadowOpacity = 0.3
+        return button
     }()
+    
+    private let disposeBag = DisposeBag()
+    private let viewModel: VaccinationListViewModel
     
     init(viewModel: VaccinationListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -31,7 +40,6 @@ final class VaccinationListViewController: UIViewController {
         setLayout()
         configureBind()
     }
-
     
     //MARK: - Data Binding
     private func configureBind() {
@@ -55,6 +63,13 @@ final class VaccinationListViewController: UIViewController {
             .asDriver(onErrorJustReturn: nil)
             .drive(with: self, onNext: { (self, nextPage) in
                 self.presentAlert(with: "더 이상 결과가 없습니다.")
+            })
+            .disposed(by: disposeBag)
+        
+        scrollToTopButton.rx.tap
+            .subscribe(with: self, onNext: { (self, _) in
+                let indexPath = IndexPath(row: 0, section: 0)
+                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
             })
             .disposed(by: disposeBag)
     }
@@ -82,16 +97,28 @@ final class VaccinationListViewController: UIViewController {
     private func setView() {
         view.backgroundColor = .white
         view.addSubview(tableView)
+        view.addSubview(scrollToTopButton)
     }
     
     private func setLayout() {
+        setTableViewLayout()
+        setButtonLayout()
+    }
+    
+    private func setTableViewLayout() {
         tableView.registerCell(withClass: VaccinationListTableViewCell.self)
         tableView.snp.makeConstraints({ make in
             make.leading.trailing.bottom.top.equalToSuperview()
         })
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
     }
-
+    
+    private func setButtonLayout() {
+        scrollToTopButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(300)
+            make.bottom.equalToSuperview().offset(-50)
+            make.width.height.equalTo(55)
+        }
+    }
+    
 }
 

@@ -9,12 +9,10 @@ import RxSwift
 import RxCocoa
 
 final class VaccinationListViewModel: ViewModelType {
-    let disposeBag = DisposeBag()
-    
     struct Input {
         let viewWillAppear: Observable<Void>
         let loadNextPage: Observable<Void>
-        let scrollToTopButtonTapped: Observable<Void> //맨 처음 셀로 이동하는 동시에 결과도 1페이지로 초기화하기
+        let scrollToTopButtonTapped: Observable<Void>
     }
     
     struct Output {
@@ -22,6 +20,7 @@ final class VaccinationListViewModel: ViewModelType {
         let canFetchNextPage: Observable<Int?>
     }
     
+    let disposeBag = DisposeBag()
     private let repository: VaccinationRepositoryType
     
     // MARK: - State
