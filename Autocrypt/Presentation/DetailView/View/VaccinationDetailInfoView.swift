@@ -13,8 +13,8 @@ class VaccinationDetailInfoView: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "hospital.png")
-        imageView.setContentHuggingPriority(.defaultHigh + 10, for: .horizontal)
-        imageView.setContentHuggingPriority(.defaultHigh + 10, for: .vertical)
+//        imageView.setContentHuggingPriority(.defaultHigh + 10, for: .horizontal)
+//        imageView.setContentHuggingPriority(.defaultHigh + 10, for: .vertical)
         return imageView
     }()
     
@@ -71,9 +71,10 @@ class VaccinationDetailInfoView: UIView {
         }
     }
     
-    func configure(with model: VaccinationCenter) {
-        titleLabel.text = model.centerName
-        descriptionLabel.text = model.address
+    func configure(with model: VaccinationInformation) {
+        imageView.image = UIImage(named: model.imageName)
+        titleLabel.text = model.title
+        descriptionLabel.text = model.description
     }
 
 }
