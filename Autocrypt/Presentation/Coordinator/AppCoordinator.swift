@@ -39,8 +39,11 @@ final class AppCoordinator: Coordinator, VaccinationListCoordinatorDelegate, Vac
         coordinator.start()
     }
     
-    func showMapViewController() {
-        
+    func showMapViewController(at viewController: UIViewController) {
+        let coordinator = VaccinationMapCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.parentCoordinator = self
+        coordinator.start()
     }
     
     func childDidFinish(_ child: Coordinator) {
