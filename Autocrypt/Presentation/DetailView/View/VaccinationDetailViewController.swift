@@ -8,8 +8,8 @@
 import UIKit
 
 protocol VaccinationDetailViewControllerDelegate: AnyObject {
-//    func showDetailViewController(at viewController: UIViewController, of model: VaccinationCenter)
     func didFinishPresenting()
+    func showMapViewController(at viewController: UIViewController)
 }
 
 class VaccinationDetailViewController: UIViewController {
@@ -35,6 +35,7 @@ class VaccinationDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        setNavigationBar()
         setLayout()
         configure(with: viewModel)
     }
@@ -59,6 +60,15 @@ class VaccinationDetailViewController: UIViewController {
     private func setView() {
         view.backgroundColor = .systemGray3
         view.addSubview(centerNameView)
+    }
+    
+    private func setNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "지도", style: .plain, target: self, action: #selector(showMapView))
+        navigationController?.navigationBar.topItem?.backButtonTitle = ""
+    }
+    
+    @objc private func showMapView() {
+        coordinator?.showMapViewController(at: self)
     }
     
     private func setLayout() {
