@@ -45,8 +45,7 @@ final class VaccinationListViewController: UIViewController {
     private func configureBind() {
         let input = VaccinationListViewModel.Input(
             viewWillAppear: rx.viewWillAppear.asObservable(),
-            loadNextPage: tableViewContentOffsetChanged(),
-            scrollToTopButtonTapped: rx.viewWillAppear.asObservable()
+            loadNextPage: tableViewContentOffsetChanged()
         )
         let output = viewModel.transform(input)
         
@@ -70,6 +69,12 @@ final class VaccinationListViewController: UIViewController {
             .subscribe(with: self, onNext: { (self, _) in
                 let indexPath = IndexPath(row: 0, section: 0)
                 self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(VaccinationCenter.self)
+            .subscribe(onNext: {
+                print($0)
             })
             .disposed(by: disposeBag)
     }

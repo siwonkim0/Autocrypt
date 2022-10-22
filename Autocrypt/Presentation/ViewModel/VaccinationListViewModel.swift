@@ -12,7 +12,6 @@ final class VaccinationListViewModel: ViewModelType {
     struct Input {
         let viewWillAppear: Observable<Void>
         let loadNextPage: Observable<Void>
-        let scrollToTopButtonTapped: Observable<Void>
     }
     
     struct Output {
