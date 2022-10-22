@@ -10,6 +10,7 @@ import RxSwift
 
 protocol NetworkProvidable {
     func request<E: RequestResponsable>(with endpoint: E, completion: @escaping (Result<E.Response, Error>) -> ())
+    func request<E: RequestResponsable>(with endpoint: E) -> Observable<E.Response>
 }
 
 final class NetworkProvider: NetworkProvidable {
