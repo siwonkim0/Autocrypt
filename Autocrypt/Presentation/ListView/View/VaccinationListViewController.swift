@@ -105,6 +105,7 @@ final class VaccinationListViewController: UIViewController {
     
     //MARK: - Configure View
     private func setView() {
+        navigationController?.navigationBar.topItem?.title = "예방접종센터 리스트"
         view.backgroundColor = .white
         view.addSubview(tableView)
         view.addSubview(scrollToTopButton)
