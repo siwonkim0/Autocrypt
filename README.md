@@ -100,9 +100,8 @@ output.nextPage
     .disposed(by: disposeBag)
 ```
 
-### 2. Coordinator를 관리하는 객체
-
-Coordinator을 ViewController가 가지고 있을지 ViewModel이 가지고 있을지 고민했습니다.
+### 2. 화면 전환을 위한 Coordinator를 관리하는 객체
+Coordinator Pattern을 적용하여 화면 전환의 역할을 하는 Coordinator를 구현하였습니다. 이때 Coordinator를 ViewController가 가지고 있을지 ViewModel이 가지고 있을지 고민했습니다.
 
 아래 두 방법중 전자를 선택했습니다.
 - ViewController가 화면전환 이벤트가 발생하면 Coordinator에게 위임
