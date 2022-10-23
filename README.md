@@ -29,6 +29,12 @@
 │   │   │   └── Endpoint
 │   │   │   │   └── RequestModel
 └── └── └── └── └── ResponseModel
+└── AutocryptTest
+    ├── TestDouble
+    ├── ListView
+    ├── DetailView
+    ├── MapView
+    └── Network
 ```
 2. 동작 영상
 
@@ -135,11 +141,13 @@ override func viewDidDisappear(_ animated: Bool) {
 DetailView가 MapView로 전환되는 시점에 ViewDidDisappear가 불려서 Detail Coordinator가 nil이 되어
 DetailView -> MapView -> DetailView로 돌아온 후 다시 MapView로 화면전환을 할 수 없는 상황이 발생하였습니다.
 
-**<해결 방법>**
+**<해결 방법>**  
 
-따라서 ViewDidDisappear에 Coordinator을 제거하는 방법 대신  
-아래와 같이 NavigationController를 가지고 있는 AppCoordinator을 UINavigationControllerDelegate로 설정하여 화면전환이 된 후 didShow 시점에 navigationController가 가진 viewControllers를 체크해서 만약 viewControllers에 아직 화면 전환이 시작된 viewController가 존재한다면, return을 하고
-존재하지 않는다면 그제서야 Coordinator을 제거하도록 수정하였습니다.
+네비게이션 스택에서 내려간 ViewController의 Coordinator만 제거하기 위해서 ViewController의 ViewDidDisappear 시점에 Coordinator을 제거하는 방법 대신  
+
+아래와 같이 NavigationController를 가지고 있는 AppCoordinator을 UINavigationControllerDelegate로 설정하여 화면전환이 된 후 didShow 시점에 navigationController가 가진 viewControllers를 체크합니다.   
+
+만약 viewControllers에 화면 전환이 시작된 viewController가 존재한다면 return을 하고, 존재하지 않는다면 그제서야 해당 ViewController의 Coordinator 제거하도록 수정하였습니다.
 
 ```swift
 extension AppCoordinator: UINavigationControllerDelegate {
