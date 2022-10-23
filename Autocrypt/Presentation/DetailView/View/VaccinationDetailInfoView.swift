@@ -12,24 +12,19 @@ class VaccinationDetailInfoView: UIView {
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "hospital.png")
-//        imageView.setContentHuggingPriority(.defaultHigh + 10, for: .horizontal)
-//        imageView.setContentHuggingPriority(.defaultHigh + 10, for: .vertical)
         return imageView
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "병원명"
-        label.font = .systemFont(ofSize: 12, weight: .black)
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         label.numberOfLines = 0
         return label
     }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "코로나19 광주광역시 서구 예방접종센터"
-        label.font = .systemFont(ofSize: 12, weight: .black)
+        label.font = .systemFont(ofSize: 14, weight: .regular)
         label.numberOfLines = 2
         label.textAlignment = .center
         return label
@@ -55,19 +50,23 @@ class VaccinationDetailInfoView: UIView {
     }
     
     private func setLayout() {
-        let stackView = UIStackView(arrangedSubviews: [imageView, titleLabel, descriptionLabel])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
         stackView.axis = .vertical
         stackView.spacing = 3
-        stackView.distribution = .fillEqually
+        stackView.distribution = .equalSpacing
         stackView.alignment = .center
+        
+        self.addSubview(imageView)
         self.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.leading.trailing.top.bottom.equalToSuperview().inset(20)
-//            make.leading.trailing.equalToSuperview().inset(20).priority(.medium)
-        }
+        
         imageView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(50)
-//            make.width.equalToSuperview().multipliedBy(0.5)
+            make.top.equalToSuperview().inset(25)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(50)
+        }
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(imageView.snp.bottom).offset(15)
         }
     }
     
