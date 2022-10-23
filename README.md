@@ -1,4 +1,42 @@
 # Autocrypt
+
+## 구현 내용
+1. Directory Tree
+```
+├── Autocrypt
+│   ├── Application
+│   ├── Utility
+│   ├── Presentation
+│   │   ├── Coordinator
+│   │   ├── Protocol
+│   │   ├── ListView
+│   │   │   ├── View
+│   │   │   │   └── Cell
+│   │   │   └── ViewModel
+│   │   ├── DetailView
+│   │   │   ├── View
+│   │   │   └── ViewModel
+│   │   ├── MapView
+│   │   │   ├── View
+│   │   │   └── ViewModel
+│   │   └── Extension
+│   ├── Data
+│   │   ├── Repository
+│   │   ├── Network
+│   │   │   ├── Extension
+│   │   │   ├── Error
+│   │   │   ├── Support
+│   │   │   └── Endpoint
+│   │   │   │   └── RequestModel
+└── └── └── └── └── ResponseModel
+```
+2. 동작 영상
+
+|List|웹뷰 표시|
+|---|---|
+|<img src="https://user-images.githubusercontent.com/60725934/197391861-62eada70-c14c-4827-a0e8-ba00c6935df1.gif" width="400" height="400"/>|<img src="https://user-images.githubusercontent.com/60725934/193577538-c5789898-7175-45f7-907b-5a1e2c16e8d1.gif" width="400" height="400"/>|
+|사용자의 스크롤에 따라 페이지 단위로 결과 노출|---|
+
 ## 고민했던 부분
 
 ### 1. 데이터 바인딩
@@ -66,6 +104,8 @@ Coordinator을 ViewController가 가지고 있을지 ViewModel이 가지고 있�
 scrollToTop 버튼 이벤트가 발생하면, ViewModel이 가진 데이터를 초기화하고 첫페이지의 결과만 보이도록 구현할지 아니면 여러 페이지를 불러온 결과를 그대로 놔둘지 고민했습니다.
 
 사용자 입장에서 생각해보니 이미 아래까지 스크롤해서 결과를 본 후 맨 위로 스크롤했다면, 언제든지 이전에 봤던 검색 결과를 빨리 다시 보고싶을것 같다는 생각에 검색 결과를 초기화하지 않는게 나을 것 같다고 생각했습니다.
+
+
 
 
 ## 트러블 슈팅
