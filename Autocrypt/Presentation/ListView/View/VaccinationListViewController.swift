@@ -56,7 +56,7 @@ final class VaccinationListViewController: UIViewController {
         )
         let output = viewModel.transform(input)
         
-        output.result
+        output.results
             .bind(to: tableView.rx.items(
                 cellIdentifier: "VaccinationListTableViewCell",
                 cellType: VaccinationListTableViewCell.self)
@@ -64,10 +64,10 @@ final class VaccinationListViewController: UIViewController {
                 cell.configure(with: element)
             }.disposed(by: disposeBag)
         
-        output.canFetchNextPage
+        output.nextPage
             .filter { $0 == nil }
             .asDriver(onErrorJustReturn: nil)
-            .drive(with: self, onNext: { (self, nextPage) in
+            .drive(with: self, onNext: { (self, _) in
                 self.presentAlert(with: "더 이상 결과가 없습니다.")
             })
             .disposed(by: disposeBag)
@@ -79,6 +79,14 @@ final class VaccinationListViewController: UIViewController {
             .drive(with: self, onNext: { (self, _) in
                 self.refreshControl.endRefreshing()
                 self.refreshControl.isHidden = true
+            })
+            .disposed(by: disposeBag)
+        
+        output.errorMessage
+            .compactMap { $0 }
+            .asDriver(onErrorJustReturn: "")
+            .drive(with: self, onNext: { (self, message) in
+                self.presentAlert(with: message)
             })
             .disposed(by: disposeBag)
         
@@ -103,7 +111,7 @@ final class VaccinationListViewController: UIViewController {
                 guard self.tableView.contentSize.height != 0 else {
                     return false
                 }
-                return self.tableView.frame.height + offset.y + 100 >= self.tableView.contentSize.height
+                return self.tableView.frame.height + offset.y + 10 >= self.tableView.contentSize.height
             }
             .map { _ in }
     }
@@ -138,7 +146,7 @@ final class VaccinationListViewController: UIViewController {
     
     private func setButtonLayout() {
         scrollToTopButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(300)
+            make.leading.equalToSuperview().offset(330)
             make.bottom.equalToSuperview().offset(-50)
             make.width.height.equalTo(55)
         }

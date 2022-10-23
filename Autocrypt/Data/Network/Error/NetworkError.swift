@@ -20,7 +20,7 @@ extension NetworkError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .unknownError(let error):
-            return "예상하지 못한 에러가 발생했습니다: \(error.localizedDescription)"
+            return "예상하지 못한 에러가 발생했습니다. \n네트워크 연결을 확인해주세요. \(error.localizedDescription)"
         case .invalidRequest:
             return "URL Request 관련 에러가 발생했습니다"
         case .invalidHttpStatusCode(let statusCode):

@@ -71,6 +71,7 @@ extension NetworkProvider {
                 switch result {
                 case .success(let data):
                     observer.onNext(data)
+                    observer.onCompleted()
                 case .failure(let error):
                     observer.onError(error)
                 }
@@ -79,5 +80,6 @@ extension NetworkProvider {
                 self?.task?.cancel()
             }
         }
+        .timeout(.milliseconds(100), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .background))
     }
 }
