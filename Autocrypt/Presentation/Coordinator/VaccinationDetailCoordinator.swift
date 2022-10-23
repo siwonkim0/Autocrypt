@@ -8,7 +8,6 @@
 import UIKit
 
 protocol VaccinationDetailCoordinatorDelegate: AnyObject {
-    func showDetailViewController(at viewController: UIViewController, of model: VaccinationCenter)
     func showMapViewController(at viewController: UIViewController)
     func childDidFinish(_ child: Coordinator)
 }
