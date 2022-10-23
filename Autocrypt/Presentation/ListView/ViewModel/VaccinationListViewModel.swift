@@ -34,7 +34,8 @@ final class VaccinationListViewModel: ViewModelType {
     }
     
     func transform(_ input: Input) -> Output {
-        input.viewWillAppear 
+        input.viewWillAppear
+            .take(1)
             .withUnretained(self)
             .flatMap { (self, _) in
                 self.fetchPaginatedResults(page: 1)
