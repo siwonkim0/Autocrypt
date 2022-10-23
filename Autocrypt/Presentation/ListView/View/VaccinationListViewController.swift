@@ -14,6 +14,7 @@ protocol VaccinationListViewControllerDelegate: AnyObject {
 
 final class VaccinationListViewController: UIViewController {
     
+    private let refreshControl = UIRefreshControl()
     private let tableView = UITableView()
     private let scrollToTopButton: UIButton = {
         let button = UIButton()
@@ -51,7 +52,8 @@ final class VaccinationListViewController: UIViewController {
     private func configureBind() {
         let input = VaccinationListViewModel.Input(
             viewWillAppear: rx.viewWillAppear.asObservable(),
-            loadNextPage: tableViewContentOffsetChanged()
+            loadNextPage: tableViewContentOffsetChanged(),
+            refresh: refreshControl.rx.controlEvent(.valueChanged).asObservable()
         )
         let output = viewModel.transform(input)
         
@@ -68,6 +70,16 @@ final class VaccinationListViewController: UIViewController {
             .asDriver(onErrorJustReturn: nil)
             .drive(with: self, onNext: { (self, nextPage) in
                 self.presentAlert(with: "더 이상 결과가 없습니다.")
+            })
+            .disposed(by: disposeBag)
+        
+        output.refreshDone
+            .skip(1)
+            .filter { $0 == false }
+            .asDriver(onErrorJustReturn: false)
+            .drive(with: self, onNext: { (self, _) in
+                self.refreshControl.endRefreshing()
+                self.refreshControl.isHidden = true
             })
             .disposed(by: disposeBag)
         
@@ -122,6 +134,7 @@ final class VaccinationListViewController: UIViewController {
         tableView.snp.makeConstraints({ make in
             make.leading.trailing.bottom.top.equalToSuperview()
         })
+        tableView.refreshControl = refreshControl
     }
     
     private func setButtonLayout() {

@@ -12,19 +12,22 @@ final class VaccinationListViewModel: ViewModelType {
     struct Input {
         let viewWillAppear: Observable<Void>
         let loadNextPage: Observable<Void>
+        let refresh: Observable<Void>
     }
     
     struct Output {
         let result: Observable<[VaccinationCenter]>
         let canFetchNextPage: Observable<Int?>
+        let refreshDone: Observable<Bool>
     }
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     private let repository: VaccinationRepositoryType
     
     // MARK: - State
     private var nextPage = BehaviorRelay<Int?>(value: 1)
     private var results = BehaviorRelay<[VaccinationCenter]>(value: [])
+    private var isRefreshing = BehaviorRelay<Bool>(value: false)
     
     init(repository: VaccinationRepositoryType) {
         self.repository = repository
@@ -56,9 +59,21 @@ final class VaccinationListViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
+        input.refresh
+            .withUnretained(self)
+            .flatMap { (self, _) -> Observable<VaccinationCenterList> in
+                self.isRefreshing.accept(true)
+                return self.fetchPaginatedResults(page: 1)
+            }
+            .subscribe(with: self, onNext: { (self, resultList) in
+                self.updateSortedResults(with: resultList.data)
+            })
+            .disposed(by: disposeBag)
+        
         return Output(
             result: results.asObservable(),
-            canFetchNextPage: nextPage.asObservable()
+            canFetchNextPage: nextPage.asObservable(),
+            refreshDone: isRefreshing.asObservable()
         )
     }
     
@@ -74,12 +89,17 @@ final class VaccinationListViewModel: ViewModelType {
         if data.count < 10 {
             self.nextPage.accept(nil)
         }
+        if isRefreshing.value {
+            nextPage.accept(1)
+            results.accept([])
+        }
         var newResults = self.results.value
         newResults.append(contentsOf: data)
         newResults.sort {
             $0.updatedAt > $1.updatedAt
         }
         self.results.accept(newResults)
+        self.isRefreshing.accept(false)
     }
     
     
