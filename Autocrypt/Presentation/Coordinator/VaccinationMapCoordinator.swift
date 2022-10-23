@@ -21,7 +21,8 @@ final class VaccinationMapCoordinator: Coordinator, VaccinationMapViewController
     }
     
     func start() {
-        let viewModel = VaccinationMapViewModel(model: model)
+        let locationManager = LocationManager()
+        let viewModel = VaccinationMapViewModel(model: model, locationManager: locationManager)
         let mapViewController = VaccinationMapViewController(viewModel: viewModel)
         mapViewController.coordinator = self
         navigationController.pushViewController(mapViewController, animated: true)
