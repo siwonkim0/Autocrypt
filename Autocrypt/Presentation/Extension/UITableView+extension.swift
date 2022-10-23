@@ -15,7 +15,6 @@ extension UITableView {
         ) as? T else {
             return T()
         }
-
         return cell
     }
 
