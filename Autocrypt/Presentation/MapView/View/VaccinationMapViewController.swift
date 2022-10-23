@@ -71,7 +71,6 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
                 guard let coordinate = coordinate else { return }
                 self.setLocation(with: coordinate)
                 self.addCustomPin(to: coordinate)
-                self.mapView.showsUserLocation = true
             })
             .disposed(by: disposeBag)
         
@@ -101,6 +100,7 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
     
     private func setLocation(with coordinate: CLLocationCoordinate2D) {
         mapView.delegate = self
+        mapView.showsUserLocation = true
         mapView.setRegion(
             MKCoordinateRegion(
                 center: coordinate,
