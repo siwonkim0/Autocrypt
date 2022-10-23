@@ -141,3 +141,23 @@ DetailView -> MapView -> DetailView로 돌아온 후 다시 MapView로 화면전
 아래와 같이 NavigationController를 가지고 있는 AppCoordinator을 UINavigationControllerDelegate로 설정하여 화면전환이 된 후 didShow 시점에 navigationController가 가진 viewControllers를 체크해서 만약 viewControllers에 아직 화면 전환이 시작된 viewController가 존재한다면, return을 하고
 존재하지 않는다면 그제서야 Coordinator을 제거하도록 수정하였습니다.
 
+```swift
+extension AppCoordinator: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
+            return
+        }
+        if navigationController.viewControllers.contains(fromViewController) {
+            return
+        }
+        
+        if let detailViewController = fromViewController as? VaccinationDetailViewController,
+           let detailViewCoordinator = detailViewController.coordinator as? Coordinator {
+            childDidFinish(detailViewCoordinator)
+        } else if let mapViewController = fromViewController as? VaccinationMapViewController,
+                  let mapViewCoordinator = mapViewController.coordinator as? Coordinator {
+            childDidFinish(mapViewCoordinator)
+        }
+    }
+}
+```
