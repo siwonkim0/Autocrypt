@@ -126,7 +126,7 @@ detailView -> mapView -> detailView 에서 mapView로 다시 화면전환이 되
 
 **<발생한 이유>**
 
-기존에는 Coordinator의 참조 관리를 위해서 ViewController가 화면에서 내려가면, viewDidDisappear 시점에 해당 Coordinator을 AppCoordinator가 가진 childCoordinator 배열에서 제거해주었습니다.
+기존에는 Coordinator의 참조 관리를 위해서 ViewController가 화면에서 , viewDidDisappear 시점에 해당 Coordinator을 AppCoordinator가 가진 childCoordinator 배열에서 제거해주었습니다.
 ```swift
 override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
