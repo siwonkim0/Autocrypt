@@ -40,10 +40,11 @@ class VaccinationDetailViewController: UIViewController {
         configure(with: viewModel)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        coordinator?.didFinishPresenting()
-    }
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        coordinator?.didFinishPresenting()
+//        print(#function)
+//    }
     
     //MARK: - Data Binding
     private func configure(with viewModel: VaccinationDetailViewModel) {
