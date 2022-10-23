@@ -13,8 +13,12 @@ protocol Coordinator: AnyObject {
     func start()
 }
 
-final class AppCoordinator: Coordinator, VaccinationListCoordinatorDelegate, VaccinationDetailCoordinatorDelegate {
-    var childCoordinators = [Coordinator]()
+final class AppCoordinator: Coordinator {
+    var childCoordinators = [Coordinator]() {
+        didSet {
+            print(childCoordinators)
+        }
+    }
     var navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
@@ -32,20 +36,6 @@ final class AppCoordinator: Coordinator, VaccinationListCoordinatorDelegate, Vac
         coordinator.start()
     }
     
-    func showDetailViewController(at viewController: UIViewController, of model: VaccinationCenter) {
-        let coordinator = VaccinationDetailCoordinator(navigationController: navigationController, model: model)
-        childCoordinators.append(coordinator)
-        coordinator.parentCoordinator = self
-        coordinator.start()
-    }
-    
-    func showMapViewController(at viewController: UIViewController) {
-        let coordinator = VaccinationMapCoordinator(navigationController: navigationController)
-        childCoordinators.append(coordinator)
-        coordinator.parentCoordinator = self
-        coordinator.start()
-    }
-    
     func childDidFinish(_ child: Coordinator) {
         for (index, coordinator) in childCoordinators.enumerated() {
             if coordinator === child {
@@ -53,5 +43,23 @@ final class AppCoordinator: Coordinator, VaccinationListCoordinatorDelegate, Vac
                 break
             }
         }
+    }
+}
+
+extension AppCoordinator: VaccinationListCoordinatorDelegate {
+    func showDetailViewController(at viewController: UIViewController, of model: VaccinationCenter) {
+        let coordinator = VaccinationDetailCoordinator(navigationController: navigationController, model: model)
+        childCoordinators.append(coordinator)
+        coordinator.parentCoordinator = self
+        coordinator.start()
+    }
+}
+
+extension AppCoordinator : VaccinationDetailCoordinatorDelegate {
+    func showMapViewController(at viewController: UIViewController) {
+        let coordinator = VaccinationMapCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.parentCoordinator = self
+        coordinator.start()
     }
 }
