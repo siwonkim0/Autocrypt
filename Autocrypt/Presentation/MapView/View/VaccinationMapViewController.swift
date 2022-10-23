@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol VaccinationMapViewControllerDelegate: AnyObject {
-    func didFinishPresenting()
-}
+protocol VaccinationMapViewControllerDelegate: AnyObject {}
 
 class VaccinationMapViewController: UIViewController {
     weak var coordinator: VaccinationMapViewControllerDelegate?
@@ -18,11 +16,6 @@ class VaccinationMapViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setNavigationBar()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        coordinator?.didFinishPresenting()
     }
     
     private func setNavigationBar() {

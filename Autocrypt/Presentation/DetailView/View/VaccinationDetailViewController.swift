@@ -8,7 +8,6 @@
 import UIKit
 
 protocol VaccinationDetailViewControllerDelegate: AnyObject {
-    func didFinishPresenting()
     func showMapViewController(at viewController: UIViewController)
 }
 
@@ -39,12 +38,6 @@ class VaccinationDetailViewController: UIViewController {
         setLayout()
         configure(with: viewModel)
     }
-    
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        coordinator?.didFinishPresenting()
-//        print(#function)
-//    }
     
     //MARK: - Data Binding
     private func configure(with viewModel: VaccinationDetailViewModel) {

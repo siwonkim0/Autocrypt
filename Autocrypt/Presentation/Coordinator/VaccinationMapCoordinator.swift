@@ -7,8 +7,10 @@
 
 import UIKit
 
+protocol VaccinationMapViewCoordinatorDelegate: AnyObject {}
+
 final class VaccinationMapCoordinator: Coordinator, VaccinationMapViewControllerDelegate {
-    weak var parentCoordinator: VaccinationDetailCoordinatorDelegate?
+    weak var parentCoordinator: VaccinationMapViewCoordinatorDelegate?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
@@ -21,10 +23,5 @@ final class VaccinationMapCoordinator: Coordinator, VaccinationMapViewController
         mapViewController.coordinator = self
         navigationController.pushViewController(mapViewController, animated: true)
     }
-    
-    func didFinishPresenting() {
-        parentCoordinator?.childDidFinish(self)
-    }
-    
     
 }

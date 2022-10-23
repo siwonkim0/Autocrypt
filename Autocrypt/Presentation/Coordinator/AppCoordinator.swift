@@ -13,12 +13,8 @@ protocol Coordinator: AnyObject {
     func start()
 }
 
-final class AppCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]() {
-        didSet {
-            print(childCoordinators)
-        }
-    }
+final class AppCoordinator: NSObject, Coordinator {
+    var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
@@ -27,6 +23,7 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         showListViewController()
+        navigationController.delegate = self
     }
     
     private func showListViewController() {
@@ -61,5 +58,26 @@ extension AppCoordinator : VaccinationDetailCoordinatorDelegate {
         childCoordinators.append(coordinator)
         coordinator.parentCoordinator = self
         coordinator.start()
+    }
+}
+
+extension AppCoordinator: VaccinationMapViewCoordinatorDelegate { }
+
+extension AppCoordinator: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
+            return
+        }
+        if navigationController.viewControllers.contains(fromViewController) {
+            return
+        }
+        
+        if let detailViewController = fromViewController as? VaccinationDetailViewController,
+           let detailViewCoordinator = detailViewController.coordinator as? Coordinator {
+            childDidFinish(detailViewCoordinator)
+        } else if let mapViewController = fromViewController as? VaccinationMapViewController,
+                  let mapViewCoordinator = mapViewController.coordinator as? Coordinator {
+            childDidFinish(mapViewCoordinator)
+        }
     }
 }
