@@ -29,6 +29,12 @@
 │   │   │   └── Endpoint
 │   │   │   │   └── RequestModel
 └── └── └── └── └── ResponseModel
+└── AutocryptTest
+    ├── TestDouble
+    ├── ListView
+    ├── DetailView
+    ├── MapView
+    └── Network
 ```
 2. 동작 영상
 
@@ -65,7 +71,7 @@ struct Output {
 
 ViewController에서 발생한 이벤트(Input)에 대한 처리를 ViewModel에서 하고, ViewModel이 가진 상태값을 변경하여 변경된 상태값(Output)에 따른 UI변경을 ViewController가 처리하도록 구현했습니다.
 
-이렇게 구현한 이유는 페이지 단위로 API 요청을 할때, ViewModel에서 다음 요청을 위해 이전 요청에 대한 결과가 필요해서 상태값을 저장해놓아야 했고, ViewController의 UI이벤트에 의해 변경된 ViewModel의 상태값 UI에 반영하는 것이 코드 가독성 측면에서도 나을 것 같다고 생각했기 때문입니다.
+이렇게 구현한 이유는 페이지 단위로 API 요청을 할때, ViewModel에서 다음 요청을 위해 이전 요청에 대한 결과가 필요해서 상태값을 저장해놓아야 했고, ViewController의 UI이벤트에 의해 변경된 ViewModel의 상태에 따라 UI를 업데이트 하는 것이 코드 가독성 측면에서도 나을 것 같다고 생각했기 때문입니다.
 
 ```swift
 private var nextPage = BehaviorRelay<Int?>(value: 1)
@@ -85,7 +91,7 @@ output.result
         cell.configure(with: element)
     }.disposed(by: disposeBag)
 
-output.canFetchNextPage
+output.nextPage
     .filter { $0 == nil }
     .asDriver(onErrorJustReturn: nil)
     .drive(with: self, onNext: { (self, nextPage) in
@@ -111,8 +117,6 @@ scrollToTop 버튼 이벤트가 발생하면, ViewModel이 가진 데이터를 �
 사용자 입장에서 생각해보니 이미 아래까지 스크롤해서 결과를 본 후 맨 위로 스크롤했다면, 언제든지 이전에 봤던 검색 결과를 빨리 다시 보고싶을것 같다는 생각에 검색 결과를 초기화하지 않는게 나을 것 같다고 생각했습니다.
 
 
-
-
 ## 트러블 슈팅
 
 ### 1. Coordinator 참조 관리중 ViewController가 메모리에서 해제되지 않았는데 Coordinator가 먼저 해제되는 문제
@@ -135,11 +139,13 @@ override func viewDidDisappear(_ animated: Bool) {
 DetailView가 MapView로 전환되는 시점에 ViewDidDisappear가 불려서 Detail Coordinator가 nil이 되어
 DetailView -> MapView -> DetailView로 돌아온 후 다시 MapView로 화면전환을 할 수 없는 상황이 발생하였습니다.
 
-**<해결 방법>**
+**<해결 방법>**  
 
-따라서 ViewDidDisappear에 Coordinator을 제거하는 방법 대신  
-아래와 같이 NavigationController를 가지고 있는 AppCoordinator을 UINavigationControllerDelegate로 설정하여 화면전환이 된 후 didShow 시점에 navigationController가 가진 viewControllers를 체크해서 만약 viewControllers에 아직 화면 전환이 시작된 viewController가 존재한다면, return을 하고
-존재하지 않는다면 그제서야 Coordinator을 제거하도록 수정하였습니다.
+네비게이션 스택에서 내려간 ViewController의 Coordinator만 제거하기 위해서 ViewController의 ViewDidDisappear 시점에 Coordinator을 제거하는 방법 대신  
+
+아래와 같이 NavigationController를 가지고 있는 AppCoordinator을 UINavigationControllerDelegate로 설정하여 화면전환이 된 후 didShow 시점에 navigationController가 가진 viewControllers를 체크합니다.   
+
+만약 viewControllers에 화면 전환이 시작된 viewController가 존재한다면 return을 하고, 존재하지 않는다면 그제서야 해당 ViewController의 Coordinator 제거하도록 수정하였습니다.
 
 ```swift
 extension AppCoordinator: UINavigationControllerDelegate {
