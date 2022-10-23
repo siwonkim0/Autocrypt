@@ -8,10 +8,10 @@
 import UIKit
 
 protocol VaccinationDetailViewControllerDelegate: AnyObject {
-    func showMapViewController(at viewController: UIViewController)
+    func showMapViewController(at viewController: UIViewController, of model: VaccinationCenter)
 }
 
-class VaccinationDetailViewController: UIViewController {
+final class VaccinationDetailViewController: UIViewController {
     
     private let centerNameView = VaccinationDetailInfoView()
     private let facilityNameView = VaccinationDetailInfoView()
@@ -58,12 +58,13 @@ class VaccinationDetailViewController: UIViewController {
     }
     
     private func setNavigationBar() {
+        //TODO
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "지도", style: .plain, target: self, action: #selector(showMapView))
         navigationController?.navigationBar.topItem?.backButtonTitle = ""
     }
     
     @objc private func showMapView() {
-        coordinator?.showMapViewController(at: self)
+        coordinator?.showMapViewController(at: self, of: viewModel.model)
     }
     
     private func setLayout() {

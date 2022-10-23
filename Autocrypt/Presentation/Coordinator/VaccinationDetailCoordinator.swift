@@ -8,7 +8,7 @@
 import UIKit
 
 protocol VaccinationDetailCoordinatorDelegate: AnyObject {
-    func showMapViewController(at viewController: UIViewController)
+    func showMapViewController(at viewController: UIViewController, of model: VaccinationCenter)
 }
 
 final class VaccinationDetailCoordinator: Coordinator, VaccinationDetailViewControllerDelegate {
@@ -29,7 +29,7 @@ final class VaccinationDetailCoordinator: Coordinator, VaccinationDetailViewCont
         navigationController.pushViewController(detailViewController, animated: true)
     }
     
-    func showMapViewController(at viewController: UIViewController) {
-        parentCoordinator?.showMapViewController(at: viewController)
+    func showMapViewController(at viewController: UIViewController, of model: VaccinationCenter) {
+        parentCoordinator?.showMapViewController(at: viewController, of: model)
     }
 }
