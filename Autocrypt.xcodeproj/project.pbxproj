@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7DCBE3375D14AC1DE7D4714D /* Pods_Autocrypt_AutocryptUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3921C7CB9D8AFAB300D73E /* Pods_Autocrypt_AutocryptUITests.framework */; };
 		A399D3D039D3399B73983B30 /* Pods_Autocrypt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DDAFC5610CE8CA2DA06DF1 /* Pods_Autocrypt.framework */; };
+		EA3275F729055ED6004480F7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3275F629055ED6004480F7 /* Storage.swift */; };
+		EA3EDD55290502BE006B0026 /* VaccinationMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3EDD54290502BE006B0026 /* VaccinationMapViewModel.swift */; };
 		EA3FA50729026BF900F3B1D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */; };
 		EA3FA50929026BF900F3B1D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */; };
 		EA3FA50B29026BF900F3B1D8 /* VaccinationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50A29026BF900F3B1D8 /* VaccinationListViewController.swift */; };
@@ -72,6 +74,8 @@
 		CE7E8B587CC99195B8F48943 /* Pods-Autocrypt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autocrypt.debug.xcconfig"; path = "Target Support Files/Pods-Autocrypt/Pods-Autocrypt.debug.xcconfig"; sourceTree = "<group>"; };
 		DA12B37FF0605D19536EDBBC /* Pods-Autocrypt-AutocryptUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autocrypt-AutocryptUITests.debug.xcconfig"; path = "Target Support Files/Pods-Autocrypt-AutocryptUITests/Pods-Autocrypt-AutocryptUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E50B10A4215E3FA94E568EAD /* Pods_AutocryptTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocryptTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA3275F629055ED6004480F7 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		EA3EDD54290502BE006B0026 /* VaccinationMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationMapViewModel.swift; sourceTree = "<group>"; };
 		EA3FA50329026BF900F3B1D8 /* Autocrypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autocrypt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 			children = (
 				EA3FA5422902704B00F3B1D8 /* HttpMethod.swift */,
 				EA3FA5442902705500F3B1D8 /* RequestResponsable.swift */,
+				EA3275F629055ED6004480F7 /* Storage.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 		EA3FA5AD29043DFF00F3B1D8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				EA3EDD54290502BE006B0026 /* VaccinationMapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -695,11 +701,13 @@
 				EA3FA56A29029F6500F3B1D8 /* RxCocoa+extension.swift in Sources */,
 				EA3FA5AA29040E9900F3B1D8 /* VaccinationDetailViewModel.swift in Sources */,
 				EA3FA5B329043EB000F3B1D8 /* VaccinationMapCoordinator.swift in Sources */,
+				EA3EDD55290502BE006B0026 /* VaccinationMapViewModel.swift in Sources */,
 				EA3FA54D2902719900F3B1D8 /* NetworkProvider.swift in Sources */,
 				EA3FA50729026BF900F3B1D8 /* AppDelegate.swift in Sources */,
 				EA3FA5A62903CF8A00F3B1D8 /* VaccinationListCoordinator.swift in Sources */,
 				EA3FA56E2902A30600F3B1D8 /* UITableView+extension.swift in Sources */,
 				EA3FA5642902936C00F3B1D8 /* VaccinationRepository.swift in Sources */,
+				EA3275F729055ED6004480F7 /* Storage.swift in Sources */,
 				EA3FA55C290289C000F3B1D8 /* StubResponse.swift in Sources */,
 				EA3FA5722902BE9400F3B1D8 /* UILabel+extension.swift in Sources */,
 				EA3FA5432902704B00F3B1D8 /* HttpMethod.swift in Sources */,
@@ -872,7 +880,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -901,7 +909,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

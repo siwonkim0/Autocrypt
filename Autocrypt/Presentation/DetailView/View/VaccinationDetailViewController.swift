@@ -5,21 +5,23 @@
 //  Created by Siwon Kim on 2022/10/22.
 //
 
-import UIKit
+import RxSwift
 
 protocol VaccinationDetailViewControllerDelegate: AnyObject {
-    func showMapViewController(at viewController: UIViewController)
+    func showMapViewController(at viewController: UIViewController, of model: VaccinationCenter)
 }
 
-class VaccinationDetailViewController: UIViewController {
+final class VaccinationDetailViewController: UIViewController {
     
     private let centerNameView = VaccinationDetailInfoView()
     private let facilityNameView = VaccinationDetailInfoView()
     private let phoneNumberView = VaccinationDetailInfoView()
     private let updatedAtView = VaccinationDetailInfoView()
     private let addressView = VaccinationDetailInfoView()
+    private let navigationBackButton = UIBarButtonItem(title: "지도", style: .plain, target: VaccinationDetailViewController.self, action: nil)
     
     weak var coordinator: VaccinationDetailViewControllerDelegate?
+    private let disposeBag = DisposeBag()
     private let viewModel: VaccinationDetailViewModel
     
     init(viewModel: VaccinationDetailViewModel) {
@@ -36,17 +38,24 @@ class VaccinationDetailViewController: UIViewController {
         setView()
         setNavigationBar()
         setLayout()
-        configure(with: viewModel)
+        configureBind()
     }
     
     //MARK: - Data Binding
-    private func configure(with viewModel: VaccinationDetailViewModel) {
+    
+    private func configureBind() {
         navigationItem.title = viewModel.centerName.description
         centerNameView.configure(with: viewModel.centerName)
         facilityNameView.configure(with: viewModel.facilityName)
         phoneNumberView.configure(with: viewModel.phoneNumber)
         updatedAtView.configure(with: viewModel.updatedAt)
         addressView.configure(with: viewModel.address)
+        
+        navigationBackButton.rx.tap
+            .subscribe(with: self, onNext: { (self, _) in
+                self.coordinator?.showMapViewController(at: self, of: self.viewModel.model)
+            })
+            .disposed(by: disposeBag)
     }
     
     //MARK: - Configure View
@@ -57,12 +66,12 @@ class VaccinationDetailViewController: UIViewController {
     }
     
     private func setNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "지도", style: .plain, target: self, action: #selector(showMapView))
+        navigationItem.rightBarButtonItem = navigationBackButton
         navigationController?.navigationBar.topItem?.backButtonTitle = ""
     }
     
     @objc private func showMapView() {
-        coordinator?.showMapViewController(at: self)
+        coordinator?.showMapViewController(at: self, of: viewModel.model)
     }
     
     private func setLayout() {

@@ -12,32 +12,40 @@ final class VaccinationListViewModel: ViewModelType {
     struct Input {
         let viewWillAppear: Observable<Void>
         let loadNextPage: Observable<Void>
+        let refresh: Observable<Void>
     }
     
     struct Output {
-        let result: Observable<[VaccinationCenter]>
-        let canFetchNextPage: Observable<Int?>
+        let results: Observable<[VaccinationCenter]>
+        let nextPage: Observable<Int?>
+        let refreshDone: Observable<Bool>
+        let errorMessage: Observable<String?>
     }
     
-    let disposeBag = DisposeBag()
-    private let repository: VaccinationRepositoryType
-    
     // MARK: - State
-    private var nextPage = BehaviorRelay<Int?>(value: 1)
     private var results = BehaviorRelay<[VaccinationCenter]>(value: [])
+    private var nextPage = BehaviorRelay<Int?>(value: 1)
+    private var isRefreshing = BehaviorRelay<Bool>(value: false)
+    private var errorMessage = BehaviorRelay<String?>(value: nil)
+    
+    private let disposeBag = DisposeBag()
+    private let repository: VaccinationRepositoryType
     
     init(repository: VaccinationRepositoryType) {
         self.repository = repository
     }
     
     func transform(_ input: Input) -> Output {
-        input.viewWillAppear 
+        input.viewWillAppear
+            .take(1)
             .withUnretained(self)
             .flatMap { (self, _) in
                 self.fetchPaginatedResults(page: 1)
             }
             .subscribe(with: self, onNext: { (self, resultList) in
                 self.updateSortedResults(with: resultList.data)
+            }, onError: { (self, error) in
+                self.updateErrorMessage(to: error.localizedDescription)
             })
             .disposed(by: disposeBag)
         
@@ -51,14 +59,33 @@ final class VaccinationListViewModel: ViewModelType {
                 return self.fetchPaginatedResults(page: nextPage)
             }
             .subscribe(with: self, onNext: { (self, resultList) in
-                self.updateNextPage(with: resultList.page)
+                self.updateNextPageState(to: resultList.page)
                 self.updateSortedResults(with: resultList.data)
+            }, onError: { (self, error) in
+                self.updateErrorMessage(to: error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+        
+        input.refresh
+            .withUnretained(self)
+            .flatMap { (self, _) -> Observable<VaccinationCenterList> in
+                self.updateRefreshState(to: true)
+                return self.fetchPaginatedResults(page: 1)
+            }
+            .subscribe(with: self, onNext: { (self, resultList) in
+                self.updateSortedResults(with: resultList.data)
+                self.updateRefreshState(to: false)
+            }, onError: { (self, error) in
+                self.updateErrorMessage(to: error.localizedDescription)
+                self.updateRefreshState(to: false)
             })
             .disposed(by: disposeBag)
         
         return Output(
-            result: results.asObservable(),
-            canFetchNextPage: nextPage.asObservable()
+            results: results.asObservable(),
+            nextPage: nextPage.asObservable(),
+            refreshDone: isRefreshing.asObservable(),
+            errorMessage: errorMessage.asObservable()
         )
     }
     
@@ -66,21 +93,40 @@ final class VaccinationListViewModel: ViewModelType {
         return repository.fetchVaccinationList(page: "\(page)")
     }
     
-    private func updateNextPage(with page: Int) {
-        self.nextPage.accept(page + 1)
-    }
-    
     private func updateSortedResults(with data: [VaccinationCenter]) {
         if data.count < 10 {
-            self.nextPage.accept(nil)
+            updateNextPageState(to: nil)
+        }
+        if isRefreshing.value {
+            updateNextPageState(to: 1)
+            updateResultState(to: [])
         }
         var newResults = self.results.value
         newResults.append(contentsOf: data)
         newResults.sort {
             $0.updatedAt > $1.updatedAt
         }
-        self.results.accept(newResults)
+        updateResultState(to: newResults)
     }
     
+    private func updateNextPageState(to page: Int?) {
+        guard let page = page else {
+            nextPage.accept(nil)
+            return
+        }
+        nextPage.accept(page + 1)
+    }
+    
+    private func updateResultState(to data: [VaccinationCenter]) {
+        results.accept(data)
+    }
+    
+    private func updateRefreshState(to state: Bool) {
+        isRefreshing.accept(state)
+    }
+    
+    private func updateErrorMessage(to message: String) {
+        self.errorMessage.accept(message)
+    }
     
 }

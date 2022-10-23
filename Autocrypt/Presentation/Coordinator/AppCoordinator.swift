@@ -53,8 +53,8 @@ extension AppCoordinator: VaccinationListCoordinatorDelegate {
 }
 
 extension AppCoordinator : VaccinationDetailCoordinatorDelegate {
-    func showMapViewController(at viewController: UIViewController) {
-        let coordinator = VaccinationMapCoordinator(navigationController: navigationController)
+    func showMapViewController(at viewController: UIViewController, of model: VaccinationCenter) {
+        let coordinator = VaccinationMapCoordinator(navigationController: navigationController, model: model)
         childCoordinators.append(coordinator)
         coordinator.parentCoordinator = self
         coordinator.start()
