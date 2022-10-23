@@ -21,13 +21,13 @@ final class VaccinationListViewModel: ViewModelType {
         let refreshDone: Observable<Bool>
     }
     
-    private let disposeBag = DisposeBag()
-    private let repository: VaccinationRepositoryType
-    
     // MARK: - State
     private var nextPage = BehaviorRelay<Int?>(value: 1)
     private var results = BehaviorRelay<[VaccinationCenter]>(value: [])
     private var isRefreshing = BehaviorRelay<Bool>(value: false)
+    
+    private let disposeBag = DisposeBag()
+    private let repository: VaccinationRepositoryType
     
     init(repository: VaccinationRepositoryType) {
         self.repository = repository
