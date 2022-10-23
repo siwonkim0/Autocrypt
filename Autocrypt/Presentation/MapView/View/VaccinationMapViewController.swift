@@ -12,8 +12,10 @@ import SnapKit
 protocol VaccinationMapViewControllerDelegate: AnyObject {}
 
 class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
-    weak var coordinator: VaccinationMapViewControllerDelegate?
+    
     private let mapView = MKMapView()
+    private let locationManager = CLLocationManager()
+    weak var coordinator: VaccinationMapViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,8 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
         setNavigationBar()
         setLayout()
         mapView.delegate = self
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
         mapView.setRegion(MKCoordinateRegion(center: .init(latitude: 37.567817, longitude: 127.004501), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
         addCustomPin()
     }
@@ -40,9 +44,36 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     private func setLayout() {
+        setMapViewLayout()
+    }
+    
+    private func setMapViewLayout() {
         view.addSubview(mapView)
         mapView.snp.makeConstraints { make in
             make.leading.top.bottom.trailing.equalToSuperview()
         }
     }
+
+}
+
+//MARK: - CoreLocationManager Delegate
+
+extension VaccinationMapViewController: CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        let status = manager.authorizationStatus
+        
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            print("GPS 권한 설정됨")
+        case .authorized:
+            print("GPS 권한 설정됨")
+        case .notDetermined, .restricted:
+            print("GPS 권한 설정되지 않음")
+        case .denied:
+            print("GPS 권한 거부됨")
+        default:
+            print("GPS: Default")
+        }
+    }
+    
 }

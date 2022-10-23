@@ -13,6 +13,7 @@ protocol VaccinationListViewControllerDelegate: AnyObject {
 }
 
 final class VaccinationListViewController: UIViewController {
+    
     private let tableView = UITableView()
     private let scrollToTopButton: UIButton = {
         let button = UIButton()
