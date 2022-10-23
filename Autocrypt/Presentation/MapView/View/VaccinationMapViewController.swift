@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import SnapKit
+import RxSwift
 
 protocol VaccinationMapViewControllerDelegate: AnyObject {}
 
@@ -36,34 +37,55 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
     }()
     
     private let mapView = MKMapView()
-    private let locationManager = CLLocationManager()
+
     weak var coordinator: VaccinationMapViewControllerDelegate?
+    private let disposeBag = DisposeBag()
+    private let viewModel: VaccinationMapViewModel
+    
+    init(viewModel: VaccinationMapViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setNavigationBar()
         setLayout()
-        getUserLocationPermission()
-        setInitialLocation()
         addCustomPin()
+        configureBind()
     }
     
-    private func setInitialLocation() {
+    private func configureBind() {
+        let input = VaccinationMapViewModel.Input(
+            viewWillAppear: rx.viewWillAppear.asObservable(),
+            currentLocationButtonTapped: toCurrentLocationButton.rx.tap.asObservable(),
+            vaccinationCenterLocationButtonTapped: toVaccinationCenterButton.rx.tap.asObservable()
+        )
+        let output = viewModel.transform(input)
+        
+        output.vaccinationCenterLocationCoordinate
+            .subscribe(with: self, onNext: { (self, coordinate) in
+                guard let coordinate = coordinate else { return }
+                self.setLocation(with: coordinate)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setLocation(with coordinate: CLLocationCoordinate2D) {
         mapView.delegate = self
         mapView.setRegion(
             MKCoordinateRegion(
-                center: .init(latitude: 37.567817, longitude: 127.004501),
+                center: coordinate,
                 span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)),
             animated: true
         )
     }
-    
-    private func getUserLocationPermission() {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-    }
-    
+
     private func addCustomPin() {
         let pin = MKPointAnnotation()
         pin.coordinate = CLLocationCoordinate2D(latitude: 37.567817, longitude: 127.004501)
@@ -106,24 +128,4 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
     
 }
 
-//MARK: - CoreLocationManager Delegate
 
-extension VaccinationMapViewController: CLLocationManagerDelegate {
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        let status = manager.authorizationStatus
-        
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            print("GPS 권한 설정됨")
-        case .authorized:
-            print("GPS 권한 설정됨")
-        case .notDetermined, .restricted:
-            print("GPS 권한 설정되지 않음")
-        case .denied:
-            print("GPS 권한 거부됨")
-        default:
-            print("GPS: Default")
-        }
-    }
-    
-}
