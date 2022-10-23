@@ -54,7 +54,7 @@ final class VaccinationListViewModel: ViewModelType {
                 return self.fetchPaginatedResults(page: nextPage)
             }
             .subscribe(with: self, onNext: { (self, resultList) in
-                self.updateNextPage(with: resultList.page)
+                self.updateNextPageState(to: resultList.page)
                 self.updateSortedResults(with: resultList.data)
             })
             .disposed(by: disposeBag)
@@ -62,7 +62,7 @@ final class VaccinationListViewModel: ViewModelType {
         input.refresh
             .withUnretained(self)
             .flatMap { (self, _) -> Observable<VaccinationCenterList> in
-                self.isRefreshing.accept(true)
+                self.updateRefreshState(to: true)
                 return self.fetchPaginatedResults(page: 1)
             }
             .subscribe(with: self, onNext: { (self, resultList) in
@@ -81,26 +81,37 @@ final class VaccinationListViewModel: ViewModelType {
         return repository.fetchVaccinationList(page: "\(page)")
     }
     
-    private func updateNextPage(with page: Int) {
-        self.nextPage.accept(page + 1)
-    }
-    
     private func updateSortedResults(with data: [VaccinationCenter]) {
         if data.count < 10 {
-            self.nextPage.accept(nil)
+            updateNextPageState(to: nil)
         }
         if isRefreshing.value {
-            nextPage.accept(1)
-            results.accept([])
+            updateNextPageState(to: 1)
+            updateResultState(to: [])
         }
         var newResults = self.results.value
         newResults.append(contentsOf: data)
         newResults.sort {
             $0.updatedAt > $1.updatedAt
         }
-        self.results.accept(newResults)
-        self.isRefreshing.accept(false)
+        updateResultState(to: newResults)
+        updateRefreshState(to: false)
     }
     
+    private func updateNextPageState(to page: Int?) {
+        guard let page = page else {
+            nextPage.accept(nil)
+            return
+        }
+        nextPage.accept(page + 1)
+    }
+    
+    private func updateResultState(to data: [VaccinationCenter]) {
+        results.accept(data)
+    }
+    
+    private func updateRefreshState(to state: Bool) {
+        isRefreshing.accept(state)
+    }
     
 }
