@@ -32,10 +32,15 @@
 ```
 2. 동작 영상
 
-|List|웹뷰 표시|
+|페이지네이션|-|
 |---|---|
-|<img src="https://user-images.githubusercontent.com/60725934/197391861-62eada70-c14c-4827-a0e8-ba00c6935df1.gif" width="400" height="400"/>|<img src="https://user-images.githubusercontent.com/60725934/193577538-c5789898-7175-45f7-907b-5a1e2c16e8d1.gif" width="400" height="400"/>|
-|사용자의 스크롤에 따라 페이지 단위로 결과 노출|---|
+|<img src="https://user-images.githubusercontent.com/60725934/197403206-c528f0bb-9cc1-44d1-bd9b-2d79148d32ec.gif" width="400" height="400"/>|<img src="https://user-images.githubusercontent.com/60725934/197403300-2a6a8710-f505-4e21-9516-8b962c8a22e9.gif" width="400" height="400"/>|
+|사용자의 스크롤에 따라 페이지 단위로 결과를 노출합니다.|다음 페이지가 없으면 Alert을 띄워줍니다.|
+
+|Scroll To Top & Refresh Control|Map View|-|
+|---|:---:|:---:|
+|<img src="https://user-images.githubusercontent.com/60725934/197403423-3652c3b5-9214-499b-b035-5b2a17c1c1d3.gif" width="400" height="400"/>|<img src="https://user-images.githubusercontent.com/60725934/197405129-9189d4de-2948-44e2-80eb-a9a264168b9d.gif" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/60725934/197405424-46de0aa5-5803-4ec9-88e8-508001d5551b.gif" width="200" height="400"/>|
+|새로고침하면 결과를 초기화합니다.|현재위치, 접종센터 위치로 이동합니다.|위치 허용을 하지 않고 현재위치로 이동하기 버튼 터치시 Alert을 띄워줍니다.|
 
 ## 고민했던 부분
 
@@ -127,12 +132,8 @@ override func viewDidDisappear(_ animated: Bool) {
 ```
 그러나, 이 방법은 화면전환이 한번만 될때는 문제가 없었지만,
 이번에 구현한 구조처럼 ListView -> DetailView -> MapView로 화면전환이 두번 되는 경우에는
-DetailView가 MapView로 전환되는 시점에 ViewDidDisappear가 불려서 Detail Coordinator가 nil이 되는 문제가 발생하였습니다.
-
-그래서 아래 gif와 같이 DetailView -> MapView -> DetailView로 돌아온 후 다시 MapView로 화면전환을 할 수 없는 상황이 발생하였습니다.
-
-![](https://i.imgur.com/oVbq7Ez.gif)
-
+DetailView가 MapView로 전환되는 시점에 ViewDidDisappear가 불려서 Detail Coordinator가 nil이 되어
+DetailView -> MapView -> DetailView로 돌아온 후 다시 MapView로 화면전환을 할 수 없는 상황이 발생하였습니다.
 
 **<해결 방법>**
 
@@ -140,4 +141,3 @@ DetailView가 MapView로 전환되는 시점에 ViewDidDisappear가 불려서 De
 아래와 같이 NavigationController를 가지고 있는 AppCoordinator을 UINavigationControllerDelegate로 설정하여 화면전환이 된 후 didShow 시점에 navigationController가 가진 viewControllers를 체크해서 만약 viewControllers에 아직 화면 전환이 시작된 viewController가 존재한다면, return을 하고
 존재하지 않는다면 그제서야 Coordinator을 제거하도록 수정하였습니다.
 
-![](https://i.imgur.com/8Uq8384.gif)
