@@ -44,11 +44,24 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
         view.backgroundColor = .white
         setNavigationBar()
         setLayout()
+        getUserLocationPermission()
+        setInitialLocation()
+        addCustomPin()
+    }
+    
+    private func setInitialLocation() {
         mapView.delegate = self
+        mapView.setRegion(
+            MKCoordinateRegion(
+                center: .init(latitude: 37.567817, longitude: 127.004501),
+                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)),
+            animated: true
+        )
+    }
+    
+    private func getUserLocationPermission() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        mapView.setRegion(MKCoordinateRegion(center: .init(latitude: 37.567817, longitude: 127.004501), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
-        addCustomPin()
     }
     
     private func addCustomPin() {
