@@ -9,7 +9,7 @@ import CoreLocation
 import RxSwift
 import RxCocoa
 
-final class VaccinationMapViewModel: NSObject, ViewModelType {
+final class VaccinationMapViewModel: ViewModelType {
     struct Input {
         let viewWillAppear: Observable<Void>
         let currentLocationButtonTapped: Observable<Void>
@@ -27,18 +27,18 @@ final class VaccinationMapViewModel: NSObject, ViewModelType {
     
     private let disposeBag = DisposeBag()
     private let model: VaccinationCenter
-    private let locationManager = CLLocationManager()
+    private let locationManager: LocationManagable
     
-    init(model: VaccinationCenter) {
+    init(model: VaccinationCenter, locationManager: LocationManagable) {
         self.model = model
-        super.init()
-        getUserLocationPermission()
+        self.locationManager = locationManager
     }
     
     func transform(_ input: Input) -> Output {
         input.viewWillAppear
             .withUnretained(self)
             .subscribe(with: self, onNext: { (self, _) in
+                self.locationManager.getUserLocationPermission()
                 self.setVaccinationCenterLocationCoordinate()
             })
             .disposed(by: disposeBag)
@@ -51,7 +51,7 @@ final class VaccinationMapViewModel: NSObject, ViewModelType {
         
         input.currentLocationButtonTapped
             .subscribe(with: self, onNext: { (self, _) in
-                self.currentLocationCoordinate.accept(self.locationManager.location?.coordinate)
+                self.currentLocationCoordinate.accept(self.locationManager.getCurrentLocation())
             })
             .disposed(by: disposeBag)
         
@@ -67,42 +67,5 @@ final class VaccinationMapViewModel: NSObject, ViewModelType {
         self.vaccinationCenterLocationCoordinate.accept(.init(latitude: latitude, longitude: longitude))
     }
     
-    private func getUserLocationPermission() {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-    }
-    
-    
 }
 
-//MARK: - CoreLocationManager Delegate
-
-extension VaccinationMapViewModel: CLLocationManagerDelegate {
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        let status = manager.authorizationStatus
-        
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            print("GPS 권한 설정됨")
-        case .authorized:
-            print("GPS 권한 설정됨")
-        case .notDetermined, .restricted:
-            print("GPS 권한 설정되지 않음")
-        case .denied:
-            print("GPS 권한 거부됨")
-        default:
-            print("GPS: Default")
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations)
-    }
-    
-}
-
-struct VaccinationCenterLocation {
-    let latitute: Double
-    let longitude: Double
-}
