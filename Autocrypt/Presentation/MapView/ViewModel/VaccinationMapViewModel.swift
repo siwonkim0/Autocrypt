@@ -70,7 +70,7 @@ final class VaccinationMapViewModel: NSObject, ViewModelType {
     private func getUserLocationPermission() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
+        locationManager.startUpdatingLocation()
     }
     
     

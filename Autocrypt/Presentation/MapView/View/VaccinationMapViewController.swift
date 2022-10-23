@@ -71,15 +71,32 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
                 guard let coordinate = coordinate else { return }
                 self.setLocation(with: coordinate)
                 self.addCustomPin(to: coordinate)
+                self.mapView.showsUserLocation = true
             })
             .disposed(by: disposeBag)
         
         output.currentLocationCoordinate
+            .skip(1)
             .subscribe(with: self, onNext: { (self, coordinate) in
-                guard let coordinate = coordinate else { return }
+                guard let coordinate = coordinate else {
+                    self.showAllowLocationAlert()
+                    return
+                }
                 self.setLocation(with: coordinate)
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func showAllowLocationAlert() {
+        let alert = UIAlertController(title: "해당 기능의 사용을 위해 위치 권한이 필요합니다.", message: "위치 권한 설정의 변경이 불가한 경우, \n먼저 '설정 > 개인 정보 보호 > 위치 서비스'를 켜주세요.", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "확인", style: .default) { _ in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            UIApplication.shared.open(url)
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(confirm)
+        alert.addAction(cancel)
+        present(alert, animated: true)
     }
     
     private func setLocation(with coordinate: CLLocationCoordinate2D) {
