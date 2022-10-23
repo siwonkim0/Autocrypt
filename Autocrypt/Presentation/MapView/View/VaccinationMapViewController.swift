@@ -5,7 +5,6 @@
 //  Created by Siwon Kim on 2022/10/23.
 //
 
-import UIKit
 import MapKit
 import SnapKit
 import RxSwift

@@ -5,7 +5,6 @@
 //  Created by Siwon Kim on 2022/10/21.
 //
 
-import UIKit
 import RxSwift
 
 protocol VaccinationListViewControllerDelegate: AnyObject {
