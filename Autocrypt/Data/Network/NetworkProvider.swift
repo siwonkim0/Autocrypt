@@ -80,6 +80,5 @@ extension NetworkProvider {
                 self?.task?.cancel()
             }
         }
-        .timeout(.milliseconds(100), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .background))
     }
 }

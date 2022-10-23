@@ -82,14 +82,6 @@ final class VaccinationListViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        output.errorMessage
-            .compactMap { $0 }
-            .asDriver(onErrorJustReturn: "")
-            .drive(with: self, onNext: { (self, message) in
-                self.presentAlert(with: message)
-            })
-            .disposed(by: disposeBag)
-        
         scrollToTopButton.rx.tap
             .subscribe(with: self, onNext: { (self, _) in
                 let indexPath = IndexPath(row: 0, section: 0)

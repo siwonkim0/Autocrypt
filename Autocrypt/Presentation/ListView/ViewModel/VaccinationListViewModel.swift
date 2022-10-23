@@ -19,14 +19,12 @@ final class VaccinationListViewModel: ViewModelType {
         let results: Observable<[VaccinationCenter]>
         let nextPage: Observable<Int?>
         let refreshDone: Observable<Bool>
-        let errorMessage: Observable<String?>
     }
     
     // MARK: - State
     private var results = BehaviorRelay<[VaccinationCenter]>(value: [])
     private var nextPage = BehaviorRelay<Int?>(value: 1)
     private var isRefreshing = BehaviorRelay<Bool>(value: false)
-    private var errorMessage = BehaviorRelay<String?>(value: nil)
     
     private let disposeBag = DisposeBag()
     private let repository: VaccinationRepositoryType
@@ -44,8 +42,6 @@ final class VaccinationListViewModel: ViewModelType {
             }
             .subscribe(with: self, onNext: { (self, resultList) in
                 self.updateSortedResults(with: resultList.data)
-            }, onError: { (self, error) in
-                self.updateErrorMessage(to: error.localizedDescription)
             })
             .disposed(by: disposeBag)
         
@@ -61,8 +57,6 @@ final class VaccinationListViewModel: ViewModelType {
             .subscribe(with: self, onNext: { (self, resultList) in
                 self.updateNextPageState(to: resultList.page)
                 self.updateSortedResults(with: resultList.data)
-            }, onError: { (self, error) in
-                self.updateErrorMessage(to: error.localizedDescription)
             })
             .disposed(by: disposeBag)
         
@@ -75,17 +69,13 @@ final class VaccinationListViewModel: ViewModelType {
             .subscribe(with: self, onNext: { (self, resultList) in
                 self.updateSortedResults(with: resultList.data)
                 self.updateRefreshState(to: false)
-            }, onError: { (self, error) in
-                self.updateErrorMessage(to: error.localizedDescription)
-                self.updateRefreshState(to: false)
             })
             .disposed(by: disposeBag)
         
         return Output(
             results: results.asObservable(),
             nextPage: nextPage.asObservable(),
-            refreshDone: isRefreshing.asObservable(),
-            errorMessage: errorMessage.asObservable()
+            refreshDone: isRefreshing.asObservable()
         )
     }
     
@@ -125,8 +115,5 @@ final class VaccinationListViewModel: ViewModelType {
         isRefreshing.accept(state)
     }
     
-    private func updateErrorMessage(to message: String) {
-        self.errorMessage.accept(message)
-    }
     
 }
