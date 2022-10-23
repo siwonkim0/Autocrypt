@@ -45,8 +45,14 @@ final class VaccinationMapViewModel: NSObject, ViewModelType {
             .disposed(by: disposeBag)
         
         input.vaccinationCenterLocationButtonTapped
-            .subscribe(with: self, onNext: { (self, resultList) in
+            .subscribe(with: self, onNext: { (self, _) in
                 self.setVaccinationCenterLocationCoordinate()
+            })
+            .disposed(by: disposeBag)
+        
+        input.currentLocationButtonTapped
+            .subscribe(with: self, onNext: { (self, _) in
+                self.currentLocationCoordinate.accept(self.locationManager.location?.coordinate)
             })
             .disposed(by: disposeBag)
         
@@ -65,6 +71,7 @@ final class VaccinationMapViewModel: NSObject, ViewModelType {
     private func getUserLocationPermission() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
     }
     
     
@@ -88,6 +95,10 @@ extension VaccinationMapViewModel: CLLocationManagerDelegate {
         default:
             print("GPS: Default")
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
     }
     
 }

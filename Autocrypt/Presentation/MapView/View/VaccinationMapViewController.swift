@@ -56,7 +56,6 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
         view.backgroundColor = .white
         setNavigationBar()
         setLayout()
-        addCustomPin()
         configureBind()
     }
     
@@ -69,6 +68,14 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
         let output = viewModel.transform(input)
         
         output.vaccinationCenterLocationCoordinate
+            .subscribe(with: self, onNext: { (self, coordinate) in
+                guard let coordinate = coordinate else { return }
+                self.setLocation(with: coordinate)
+                self.addCustomPin(to: coordinate)
+            })
+            .disposed(by: disposeBag)
+        
+        output.currentLocationCoordinate
             .subscribe(with: self, onNext: { (self, coordinate) in
                 guard let coordinate = coordinate else { return }
                 self.setLocation(with: coordinate)
@@ -86,9 +93,9 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
         )
     }
 
-    private func addCustomPin() {
+    private func addCustomPin(to coordinate: CLLocationCoordinate2D) {
         let pin = MKPointAnnotation()
-        pin.coordinate = CLLocationCoordinate2D(latitude: 37.567817, longitude: 127.004501)
+        pin.coordinate = coordinate
         pin.title = "코로나19 중앙 예방접종센터"
         mapView.addAnnotation(pin)
     }
