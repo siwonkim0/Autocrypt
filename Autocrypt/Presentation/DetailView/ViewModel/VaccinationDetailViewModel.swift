@@ -8,6 +8,7 @@
 import Foundation
 
 final class VaccinationDetailViewModel {
+    
     let model: VaccinationCenter
     
     var centerName: VaccinationInformation {

@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 final class VaccinationMapViewModel: ViewModelType {
+    
     struct Input {
         let viewWillAppear: Observable<Void>
         let currentLocationButtonTapped: Observable<Void>

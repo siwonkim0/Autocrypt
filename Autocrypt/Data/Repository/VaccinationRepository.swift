@@ -12,6 +12,7 @@ protocol VaccinationRepositoryType {
 }
 
 final class VaccinationRepository: VaccinationRepositoryType {
+    
     private let networkProvider: NetworkProvidable
     
     init(networkProvider: NetworkProvidable) {

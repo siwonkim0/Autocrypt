@@ -14,6 +14,7 @@ protocol NetworkProvidable {
 }
 
 final class NetworkProvider: NetworkProvidable {
+    
     private let session: URLSessionable
     private var task: URLSessionDataTask?
     

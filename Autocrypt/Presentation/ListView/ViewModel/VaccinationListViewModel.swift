@@ -9,6 +9,7 @@ import RxSwift
 import RxCocoa
 
 final class VaccinationListViewModel: ViewModelType {
+    
     struct Input {
         let viewWillAppear: Observable<Void>
         let loadNextPage: Observable<Void>

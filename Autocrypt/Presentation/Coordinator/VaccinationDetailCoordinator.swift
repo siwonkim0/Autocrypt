@@ -12,8 +12,10 @@ protocol VaccinationDetailCoordinatorDelegate: AnyObject {
 }
 
 final class VaccinationDetailCoordinator: Coordinator, VaccinationDetailViewControllerDelegate {
+    
     weak var parentCoordinator: VaccinationDetailCoordinatorDelegate?
     var childCoordinators = [Coordinator]()
+    
     var navigationController: UINavigationController
     private let model: VaccinationCenter
     

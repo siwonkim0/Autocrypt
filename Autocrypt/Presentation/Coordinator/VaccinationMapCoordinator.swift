@@ -10,8 +10,10 @@ import UIKit
 protocol VaccinationMapViewCoordinatorDelegate: AnyObject {}
 
 final class VaccinationMapCoordinator: Coordinator, VaccinationMapViewControllerDelegate {
+    
     weak var parentCoordinator: VaccinationMapViewCoordinatorDelegate?
     var childCoordinators = [Coordinator]()
+    
     var navigationController: UINavigationController
     private let model: VaccinationCenter
     

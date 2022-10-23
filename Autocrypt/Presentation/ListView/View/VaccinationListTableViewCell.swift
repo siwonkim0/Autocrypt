@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class VaccinationListTableViewCell: UITableViewCell {
+    
     private let centerNameTitleLabel = UILabel().setTitleLabel(named: "센터명")
     private let facilityNameTitleLabel = UILabel().setTitleLabel(named: "건물명")
     private let addressTitleLabel = UILabel().setTitleLabel(named: "주소")

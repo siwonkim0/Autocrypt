@@ -8,6 +8,7 @@
 import Foundation
 
 final class StubURLSession: URLSessionable {
+    
     enum ResponseState {
         case success
         case invalidStatusCode
