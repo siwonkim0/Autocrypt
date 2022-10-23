@@ -10,6 +10,12 @@
 		7DCBE3375D14AC1DE7D4714D /* Pods_Autocrypt_AutocryptUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3921C7CB9D8AFAB300D73E /* Pods_Autocrypt_AutocryptUITests.framework */; };
 		A399D3D039D3399B73983B30 /* Pods_Autocrypt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DDAFC5610CE8CA2DA06DF1 /* Pods_Autocrypt.framework */; };
 		EA3275F729055ED6004480F7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3275F629055ED6004480F7 /* Storage.swift */; };
+		EA3275F92905AE5A004480F7 /* SpyVaccinationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3275F82905AE5A004480F7 /* SpyVaccinationRepository.swift */; };
+		EA3275FB2905B017004480F7 /* VaccinationListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3275FA2905B017004480F7 /* VaccinationListViewModelTests.swift */; };
+		EA3275FD2905C41E004480F7 /* VaccinationDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3275FC2905C41E004480F7 /* VaccinationDetailViewModelTests.swift */; };
+		EA3275FF2905C73B004480F7 /* VaccinationMapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3275FE2905C73B004480F7 /* VaccinationMapViewModelTests.swift */; };
+		EA3276012905C9B2004480F7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3276002905C9B2004480F7 /* LocationManager.swift */; };
+		EA3276032905CEAA004480F7 /* SpyLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3276022905CEAA004480F7 /* SpyLocationManager.swift */; };
 		EA3EDD55290502BE006B0026 /* VaccinationMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3EDD54290502BE006B0026 /* VaccinationMapViewModel.swift */; };
 		EA3FA50729026BF900F3B1D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */; };
 		EA3FA50929026BF900F3B1D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3FA50829026BF900F3B1D8 /* SceneDelegate.swift */; };
@@ -75,6 +81,12 @@
 		DA12B37FF0605D19536EDBBC /* Pods-Autocrypt-AutocryptUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autocrypt-AutocryptUITests.debug.xcconfig"; path = "Target Support Files/Pods-Autocrypt-AutocryptUITests/Pods-Autocrypt-AutocryptUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E50B10A4215E3FA94E568EAD /* Pods_AutocryptTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutocryptTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3275F629055ED6004480F7 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		EA3275F82905AE5A004480F7 /* SpyVaccinationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyVaccinationRepository.swift; sourceTree = "<group>"; };
+		EA3275FA2905B017004480F7 /* VaccinationListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationListViewModelTests.swift; sourceTree = "<group>"; };
+		EA3275FC2905C41E004480F7 /* VaccinationDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationDetailViewModelTests.swift; sourceTree = "<group>"; };
+		EA3275FE2905C73B004480F7 /* VaccinationMapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationMapViewModelTests.swift; sourceTree = "<group>"; };
+		EA3276002905C9B2004480F7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		EA3276022905CEAA004480F7 /* SpyLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyLocationManager.swift; sourceTree = "<group>"; };
 		EA3EDD54290502BE006B0026 /* VaccinationMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinationMapViewModel.swift; sourceTree = "<group>"; };
 		EA3FA50329026BF900F3B1D8 /* Autocrypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autocrypt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3FA50629026BF900F3B1D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +215,9 @@
 			children = (
 				EA3FA5532902892900F3B1D8 /* TestDouble */,
 				EA3FA51D29026BFA00F3B1D8 /* NetworkProviderTests.swift */,
+				EA3275FA2905B017004480F7 /* VaccinationListViewModelTests.swift */,
+				EA3275FC2905C41E004480F7 /* VaccinationDetailViewModelTests.swift */,
+				EA3275FE2905C73B004480F7 /* VaccinationMapViewModelTests.swift */,
 			);
 			path = AutocryptTests;
 			sourceTree = "<group>";
@@ -298,6 +313,8 @@
 				EA3FA5542902893900F3B1D8 /* StubResponse.swift */,
 				EA3FA5562902898E00F3B1D8 /* StubURLSessionDataTask.swift */,
 				EA3FA558290289AC00F3B1D8 /* StubURLSession.swift */,
+				EA3275F82905AE5A004480F7 /* SpyVaccinationRepository.swift */,
+				EA3276022905CEAA004480F7 /* SpyLocationManager.swift */,
 			);
 			path = TestDouble;
 			sourceTree = "<group>";
@@ -425,6 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				EA3EDD54290502BE006B0026 /* VaccinationMapViewModel.swift */,
+				EA3276002905C9B2004480F7 /* LocationManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -702,6 +720,7 @@
 				EA3FA5AA29040E9900F3B1D8 /* VaccinationDetailViewModel.swift in Sources */,
 				EA3FA5B329043EB000F3B1D8 /* VaccinationMapCoordinator.swift in Sources */,
 				EA3EDD55290502BE006B0026 /* VaccinationMapViewModel.swift in Sources */,
+				EA3276012905C9B2004480F7 /* LocationManager.swift in Sources */,
 				EA3FA54D2902719900F3B1D8 /* NetworkProvider.swift in Sources */,
 				EA3FA50729026BF900F3B1D8 /* AppDelegate.swift in Sources */,
 				EA3FA5A62903CF8A00F3B1D8 /* VaccinationListCoordinator.swift in Sources */,
@@ -724,7 +743,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA3275F92905AE5A004480F7 /* SpyVaccinationRepository.swift in Sources */,
+				EA3275FD2905C41E004480F7 /* VaccinationDetailViewModelTests.swift in Sources */,
 				EA3FA51E29026BFA00F3B1D8 /* NetworkProviderTests.swift in Sources */,
+				EA3275FF2905C73B004480F7 /* VaccinationMapViewModelTests.swift in Sources */,
+				EA3276032905CEAA004480F7 /* SpyLocationManager.swift in Sources */,
+				EA3275FB2905B017004480F7 /* VaccinationListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
