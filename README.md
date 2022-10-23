@@ -71,7 +71,7 @@ struct Output {
 
 ViewController에서 발생한 이벤트(Input)에 대한 처리를 ViewModel에서 하고, ViewModel이 가진 상태값을 변경하여 변경된 상태값(Output)에 따른 UI변경을 ViewController가 처리하도록 구현했습니다.
 
-이렇게 구현한 이유는 페이지 단위로 API 요청을 할때, ViewModel에서 다음 요청을 위해 이전 요청에 대한 결과가 필요해서 상태값을 저장해놓아야 했고, ViewController의 UI이벤트에 의해 변경된 ViewModel의 상태값 UI에 반영하는 것이 코드 가독성 측면에서도 나을 것 같다고 생각했기 때문입니다.
+이렇게 구현한 이유는 페이지 단위로 API 요청을 할때, ViewModel에서 다음 요청을 위해 이전 요청에 대한 결과가 필요해서 상태값을 저장해놓아야 했고, ViewController의 UI이벤트에 의해 변경된 ViewModel의 상태에 따라 UI를 업데이트 하는 것이 코드 가독성 측면에서도 나을 것 같다고 생각했기 때문입니다.
 
 ```swift
 private var nextPage = BehaviorRelay<Int?>(value: 1)
@@ -91,7 +91,7 @@ output.result
         cell.configure(with: element)
     }.disposed(by: disposeBag)
 
-output.canFetchNextPage
+output.nextPage
     .filter { $0 == nil }
     .asDriver(onErrorJustReturn: nil)
     .drive(with: self, onNext: { (self, nextPage) in
@@ -115,8 +115,6 @@ Coordinator을 ViewController가 가지고 있을지 ViewModel이 가지고 있�
 scrollToTop 버튼 이벤트가 발생하면, ViewModel이 가진 데이터를 초기화하고 첫페이지의 결과만 보이도록 구현할지 아니면 여러 페이지를 불러온 결과를 그대로 놔둘지 고민했습니다.
 
 사용자 입장에서 생각해보니 이미 아래까지 스크롤해서 결과를 본 후 맨 위로 스크롤했다면, 언제든지 이전에 봤던 검색 결과를 빨리 다시 보고싶을것 같다는 생각에 검색 결과를 초기화하지 않는게 나을 것 같다고 생각했습니다.
-
-
 
 
 ## 트러블 슈팅
