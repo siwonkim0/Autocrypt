@@ -13,6 +13,28 @@ protocol VaccinationMapViewControllerDelegate: AnyObject {}
 
 class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
     
+    private let toCurrentLocationButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.titleLabel?.textColor = .white
+        button.titleLabel?.font = .systemFont(ofSize: 15)
+        button.setTitle("현재위치로", for: .normal)
+        button.layer.cornerRadius = 5
+        button.layer.masksToBounds = false
+        return button
+    }()
+    
+    private let toVaccinationCenterButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .red
+        button.titleLabel?.textColor = .white
+        button.titleLabel?.font = .systemFont(ofSize: 15)
+        button.setTitle("접종센터로", for: .normal)
+        button.layer.cornerRadius = 5
+        button.layer.masksToBounds = false
+        return button
+    }()
+    
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
     weak var coordinator: VaccinationMapViewControllerDelegate?
@@ -45,6 +67,7 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
     
     private func setLayout() {
         setMapViewLayout()
+        setStackViewLayout()
     }
     
     private func setMapViewLayout() {
@@ -53,7 +76,21 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
             make.leading.top.bottom.trailing.equalToSuperview()
         }
     }
-
+    
+    private func setStackViewLayout() {
+        let stackView = UIStackView(arrangedSubviews: [toCurrentLocationButton, toVaccinationCenterButton])
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        stackView.axis = .vertical
+        view.addSubview(stackView)
+        
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().offset(-80)
+            make.height.equalTo(110)
+        }
+    }
+    
 }
 
 //MARK: - CoreLocationManager Delegate
