@@ -62,9 +62,9 @@
 - UI 이벤트에 대한 Model 업데이트를 담당하는 ViewModel을 생성하여 ViewController의 책임을 분리했습니다.
 - ViewModel이 Input과 Output을 가지게 해서 코드의 가독성을 높혔고, ViewController을 mocking하기 쉽도록 구성하여 ViewModel 테스트를 진행해보았습니다.
 
-#### Repository, NetworkManager
+#### Repository, NetworkProvider
 - 프로토콜을 통한 추상화로 객체간 의존성을 낮췄고, 이로 인해 테스트가 용이한 코드를 작성할 수 있었습니다.
-- 네트워크 연결 성공/실패에 대한 NetworkManager 테스트를 진행해보았습니다.
+- 네트워크 연결 성공/실패에 대한 NetworkProvider 테스트를 진행해보았습니다.
 
 ## 고민했던 부분
 
