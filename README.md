@@ -58,6 +58,9 @@
 - 화면 전환 로직을 담당하는 Coordinator를 생성하여 ViewController의 delegate로 지정하여 화면 전환 책임을 분리했습니다.
 이로 인해 ViewController가 다른 ViewController에 대해 관여하지 않고 독립적으로 존재할 수 있어서, 역할 분리가 명확해진다는 장점이 있습니다.
 
+<img width="459" alt="스크린샷 2022-10-24 오후 12 19 44" src="https://user-images.githubusercontent.com/60725934/197442217-7a75d726-efdf-4f80-bd70-d1dcf4042508.png">
+
+
 #### ViewModel
 - UI 이벤트에 대한 Model 업데이트를 담당하는 ViewModel을 생성하여 ViewController의 책임을 분리했습니다.
 - ViewModel이 Input과 Output을 가지게 해서 코드의 가독성을 높혔고, ViewController을 mocking하기 쉽도록 구성하여 ViewModel 테스트를 진행해보았습니다.
