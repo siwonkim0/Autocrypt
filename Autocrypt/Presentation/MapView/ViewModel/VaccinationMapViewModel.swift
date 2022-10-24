@@ -35,6 +35,8 @@ final class VaccinationMapViewModel: ViewModelType {
         self.locationManager = locationManager
     }
     
+    //MARK: - Configure Data Binding
+    
     func transform(_ input: Input) -> Output {
         input.viewWillAppear
             .withUnretained(self)

@@ -52,11 +52,13 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        setView()
         setNavigationBar()
         setLayout()
         configureBind()
     }
+    
+    //MARK: - Configure Data Binding
     
     private func configureBind() {
         let input = VaccinationMapViewModel.Input(
@@ -86,6 +88,8 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
             .disposed(by: disposeBag)
     }
     
+    //MARK: - Configure Alert
+    
     private func showAllowLocationAlert() {
         let alert = UIAlertController(title: "해당 기능의 사용을 위해 위치 권한이 필요합니다.", message: "위치 권한 설정의 변경이 불가한 경우, \n먼저 '설정 > 개인 정보 보호 > 위치 서비스'를 켜주세요.", preferredStyle: .alert)
         let confirm = UIAlertAction(title: "확인", style: .default) { _ in
@@ -97,6 +101,8 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
         alert.addAction(cancel)
         present(alert, animated: true)
     }
+    
+    //MARK: - Configure Map View
     
     private func setLocation(with coordinate: CLLocationCoordinate2D) {
         mapView.delegate = self
@@ -117,6 +123,10 @@ class VaccinationMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     //MARK: - Configure View
+    
+    private func setView() {
+        view.backgroundColor = .white
+    }
     
     private func setNavigationBar() {
         navigationController?.navigationBar.topItem?.backButtonTitle = "Back"

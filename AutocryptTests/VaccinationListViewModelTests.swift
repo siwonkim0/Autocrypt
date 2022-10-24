@@ -77,7 +77,7 @@ class VaccinationListViewModelTests: XCTestCase {
             .disposed(by: disposeBag)
     }
     
-    func test_새로고침을_하면_nextPage는_1이_되어야한다() {
+    func test_새로고침을_하면_nextPage는_2가_되어야한다() {
         refreshSubject.onNext(())
         output.nextPage
             .subscribe(onNext: { page in

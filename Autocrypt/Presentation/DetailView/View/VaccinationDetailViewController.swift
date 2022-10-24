@@ -41,7 +41,7 @@ final class VaccinationDetailViewController: UIViewController {
         configureBind()
     }
     
-    //MARK: - Data Binding
+    //MARK: - Configure Data Binding
     
     private func configureBind() {
         navigationItem.title = viewModel.centerName.description

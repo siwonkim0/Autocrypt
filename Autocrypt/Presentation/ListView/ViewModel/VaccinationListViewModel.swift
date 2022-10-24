@@ -34,6 +34,8 @@ final class VaccinationListViewModel: ViewModelType {
         self.repository = repository
     }
     
+    //MARK: - Configure Data Binding
+    
     func transform(_ input: Input) -> Output {
         input.viewWillAppear
             .take(1)

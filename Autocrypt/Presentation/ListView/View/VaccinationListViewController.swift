@@ -47,7 +47,8 @@ final class VaccinationListViewController: UIViewController {
         configureBind()
     }
     
-    //MARK: - Data Binding
+    //MARK: - Configure Data Binding
+    
     private func configureBind() {
         let input = VaccinationListViewModel.Input(
             viewWillAppear: rx.viewWillAppear.asObservable(),
@@ -108,6 +109,8 @@ final class VaccinationListViewController: UIViewController {
             .map { _ in }
     }
     
+    //MARK: - Configure Alert
+    
     private func presentAlert(with message: String) {
         let alert = UIAlertController(title: nil, message: "\(message)", preferredStyle: .alert)
         let confirm = UIAlertAction(title: "확인", style: .default)
@@ -116,6 +119,7 @@ final class VaccinationListViewController: UIViewController {
     }
     
     //MARK: - Configure View
+    
     private func setView() {
         navigationController?.navigationBar.topItem?.title = "예방접종센터 리스트"
         view.backgroundColor = .white
