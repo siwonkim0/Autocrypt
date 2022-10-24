@@ -1,7 +1,7 @@
 # Autocrypt
 
 ## 구현 내용
-1. Directory Tree
+### 1. Directory Tree
 ```
 ├── Autocrypt
 │   ├── Application
@@ -36,7 +36,7 @@
     ├── MapView
     └── Network
 ```
-2. 동작 영상
+### 2. 동작 영상
 
 |페이지네이션|-|
 |---|---|
@@ -46,13 +46,31 @@
 |Scroll To Top & Refresh Control|Map View|-|
 |---|:---:|:---:|
 |<img src="https://user-images.githubusercontent.com/60725934/197403423-3652c3b5-9214-499b-b035-5b2a17c1c1d3.gif" width="400" height="400"/>|<img src="https://user-images.githubusercontent.com/60725934/197405129-9189d4de-2948-44e2-80eb-a9a264168b9d.gif" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/60725934/197405424-46de0aa5-5803-4ec9-88e8-508001d5551b.gif" width="200" height="400"/>|
-|새로고침하면 결과를 초기화합니다.|현재위치, 접종센터 위치로 이동합니다.|위치 허용을 하지 않고 현재위치로 이동하기 버튼 터치시 Alert을 띄워줍니다.|
+|새로고침하면 결과를 첫 페이지로 초기화합니다.|현재위치, 접종센터 위치로 이동합니다.|위치 허용을 하지 않고 현재위치로 이동하기 버튼 터치시 Alert을 띄워줍니다.|
+
+### 3. 아키텍처
+
+### MVVM + CleanArchitecture  
+프로토콜을 통한 추상화와 역할에 따른 객체 분리를 통해 코드의 확장성과 가독성을 개선하는 방향으로 설계하려고 노력했습니다.
+<img width="864" alt="스크린샷 2022-10-24 오후 12 07 22" src="https://user-images.githubusercontent.com/60725934/197440913-dd9726de-ae45-4350-a3de-aaea7573d7f6.png">
+
+#### Coordinator
+- 화면 전환 로직을 담당하는 Coordinator를 생성하여 ViewController의 delegate로 지정하여 화면 전환 책임을 분리했습니다.
+이로 인해 ViewController가 다른 ViewController에 대해 관여하지 않고 독립적으로 존재할 수 있어서, 역할 분리가 명확해진다는 장점이 있습니다.
+
+#### ViewModel
+- UI 이벤트에 대한 Model 업데이트를 담당하는 ViewModel을 생성하여 ViewController의 책임을 분리했습니다.
+- ViewModel이 Input과 Output을 가지게 해서 코드의 가독성을 높혔고, ViewController을 mocking하기 쉽도록 구성하여 ViewModel 테스트를 진행해보았습니다.
+
+#### Repository, NetworkManager
+- 프로토콜을 통한 추상화로 객체간 의존성을 낮췄고, 이로 인해 테스트가 용이한 코드를 작성할 수 있었습니다.
+- 네트워크 연결 성공/실패에 대한 NetworkManager 테스트를 진행해보았습니다.
 
 ## 고민했던 부분
 
 ### 1. 데이터 바인딩
 
-ViewController와 ViewModel간의 데이터 바인딩을 Input - Output 구조로 구현했습니다.
+ViewController와 ViewModel간의 데이터 바인딩을 `Input - Output 구조`로 구현했습니다.
 ```swift
 struct Input {
     let viewWillAppear: Observable<Void>
@@ -118,7 +136,7 @@ scrollToTop 버튼 이벤트가 발생하면, ViewModel이 가진 데이터를 �
 
 ## 트러블 슈팅
 
-### 1. Coordinator 참조 관리중 ViewController가 메모리에서 해제되지 않았는데 Coordinator가 먼저 해제되는 문제
+### 1. Coordinator Pattern 적용 중에 ViewController가 메모리에서 해제되지 않았는데 해당 Coordinator가 먼저 해제되는 문제
 
 **<문제 상황>**
 
@@ -126,7 +144,7 @@ detailView -> mapView -> detailView 에서 mapView로 다시 화면전환이 되
 
 **<발생한 이유>**
 
-기존에는 Coordinator의 참조 관리를 위해서 ViewController가 화면에서 , viewDidDisappear 시점에 해당 Coordinator을 AppCoordinator가 가진 childCoordinator 배열에서 제거해주었습니다.
+기존에는 Coordinator의 참조 관리를 위해서 ViewController가 화면에서 사라지는 viewDidDisappear 시점에 해당 Coordinator을 AppCoordinator가 가진 childCoordinator 배열에서 제거해주었습니다.
 ```swift
 override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
@@ -140,7 +158,7 @@ DetailView -> MapView -> DetailView로 돌아온 후 다시 MapView로 화면전
 
 **<해결 방법>**  
 
-네비게이션 스택에서 내려간 ViewController의 Coordinator만 제거하기 위해서 ViewController의 ViewDidDisappear 시점에 Coordinator을 제거하는 방법 대신  
+네비게이션 스택에서 내려간 ViewController의 Coordinator만 제거하기 위해서 기존 방법인 ViewController의 ViewDidDisappear 시점에 Coordinator를 제거하는 대신  
 
 아래와 같이 NavigationController를 가지고 있는 AppCoordinator을 UINavigationControllerDelegate로 설정하여 화면전환이 된 후 didShow 시점에 navigationController가 가진 viewControllers를 체크합니다.   
 
